@@ -4,7 +4,7 @@ export default function SocialLinks() {
       <a
         href="#"
         aria-label="WhatsApp"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#3D3A38] text-sm font-bold text-white transition hover:scale-105"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#3D3A38] text-sm font-bold text-white transition-all duration-300 hover:scale-110 hover:bg-[#2D2A28] hover:shadow-md"
       >
         W
       </a>
@@ -12,7 +12,7 @@ export default function SocialLinks() {
       <a
         href="#"
         aria-label="Instagram"
-        className="text-[#3D3A38] transition hover:scale-105"
+        className="text-[#3D3A38] transition-all duration-300 hover:scale-110 hover:text-[#8B7355]"
       >
         <svg 
           width="24" 
@@ -33,7 +33,7 @@ export default function SocialLinks() {
       <a
         href="#"
         aria-label="LinkedIn"
-        className="text-[#3D3A38] transition hover:scale-105"
+        className="text-[#3D3A38] transition-all duration-300 hover:scale-110 hover:text-[#8B7355]"
       >
         <svg 
           width="24" 

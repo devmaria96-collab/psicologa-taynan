@@ -1,15 +1,10 @@
-import Header from "./Components/layout/Header";
-import Footer from "./Components/layout/Footer";
 import Hero from "./sections/Hero";
-import About from "./sections/About";
+import PageTransition from "./components/PageTransition";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F4E9DD]">
-      <Header />
+    <PageTransition>
       <Hero />
-      <About />
-      <Footer />
-    </main>
+    </PageTransition>
   );
 }
