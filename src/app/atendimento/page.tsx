@@ -57,7 +57,7 @@ export default function Atendimento() {
           </h1>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 items-stretch">
           {cards.map((card, index) => (
             <FadeIn key={index} delay={index * 100}>
               <ServiceCard

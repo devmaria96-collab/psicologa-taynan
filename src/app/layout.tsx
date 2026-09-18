@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./Components/layout/Header";
 import Footer from "./Components/layout/Footer";
+import { siteConfig } from "../config/site";
 
 export const metadata: Metadata = {
-  title: "Taynan Azevedo - Psicólogo",
-  description: "Terapia online para adolescentes e adultos",
+  title: siteConfig.metadata.title,
+  description: siteConfig.metadata.description,
 };
 
 export default function RootLayout({

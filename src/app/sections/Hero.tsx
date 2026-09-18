@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="mx-auto grid min-h-[85vh] max-w-[1200px] grid-cols-1 items-center gap-12 px-6 py-10 md:grid-cols-[55%_45%] md:px-10"
+      className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-6 py-16 md:grid-cols-[55%_45%] md:px-10 md:py-20"
     >
       <div className="flex flex-col">
         <FadeIn delay={0}>
@@ -47,13 +47,15 @@ export default function Hero() {
         <FadeIn delay={500}>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="#agendar"
+              href="https://wa.me/5511999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#3D3A38] px-6 py-3 text-center font-medium text-white transition-all duration-300 hover:bg-[#2D2A28] hover:-translate-y-0.5 hover:shadow-lg"
             >
               Agendar consulta
             </a>
             <a
-              href="#trabalho"
+              href="/sobre"
               className="rounded-full border-2 border-[#3D3A38] px-6 py-3 text-center font-medium text-[#3D3A38] transition-all duration-300 hover:bg-[#3D3A38] hover:text-white hover:-translate-y-0.5"
             >
               Conheça meu trabalho

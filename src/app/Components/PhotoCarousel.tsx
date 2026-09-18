@@ -109,6 +109,10 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
     return baseTranslate + (currentTranslate / (containerRef.current?.offsetWidth || 1)) * 100;
   };
 
+  // Calculate total slides
+  const totalSlides = Math.ceil(photos.length / visibleCount);
+  const currentSlide = Math.floor(currentIndex / visibleCount);
+
   return (
     <div className="relative">
       <div
@@ -152,6 +156,22 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
           ))}
         </div>
       </div>
+
+      {/* Mobile indicators */}
+      {visibleCount === 1 && (
+        <div className="flex justify-center gap-2 mt-4">
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index * visibleCount)}
+              aria-label={`Ir para slide ${index + 1}`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide ? "bg-[#3D3A38] w-6" : "bg-[#3D3A38] opacity-30"
+              }`}
+            />
+          ))}
+        </div>
+      )}
 
       {photos.length > visibleCount && (
         <>

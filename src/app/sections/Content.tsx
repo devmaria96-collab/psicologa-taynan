@@ -1,15 +1,16 @@
+import { siteConfig } from "../../config/site";
+
 export const psychologist = {
-  name: "Taynan Azevedo",
-  crp: "00000-0000",
-  tagline: "PSICOLOGIA • ATENDIMENTO ONLINE",
-  title: "Psicologia para uma vida mais leve e consciente.",
-  subtitle: "Terapia online para adolescentes e adultos.",
-  description:
-    "Um espaço seguro e acolhedor para compreender seus sentimentos, relações e escolhas.",
+  name: siteConfig.name,
+  crp: siteConfig.crp,
+  tagline: siteConfig.tagline,
+  title: siteConfig.heroTitle,
+  subtitle: siteConfig.subtitle,
+  description: siteConfig.description,
 
   social: {
-    whatsapp: "#",
-    instagram: "#",
-    linkedin: "#",
+    whatsapp: siteConfig.whatsapp.fullNumber,
+    instagram: siteConfig.instagram.url,
+    linkedin: siteConfig.linkedin.url,
   },
 };

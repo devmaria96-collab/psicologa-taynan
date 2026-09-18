@@ -41,12 +41,14 @@ export default function Header() {
             </Link>
           ))}
 
-          <Link
-            href="/agendar"
+          <a
+            href="https://wa.me/5511999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-[#3D3A38] px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#2D2A28] hover:-translate-y-0.5 hover:shadow-lg"
           >
             Agendar consulta
-          </Link>
+          </a>
         </div>
 
         <MobileMenu />
