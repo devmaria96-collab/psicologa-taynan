@@ -94,7 +94,7 @@ export default function MobileMenu() {
                 className="font-display text-xl font-semibold tracking-[0.04em] text-[var(--color-foreground)]"
                 onClick={() => setIsOpen(false)}
             >
-                THAYNAN AZEVEDO
+                TAYNAN AZEVEDO
             </Link>
             <button
                 ref={closeButtonRef}

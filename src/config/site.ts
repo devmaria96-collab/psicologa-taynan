@@ -1,6 +1,6 @@
 export const siteConfig = {
   // Informações da profissional
-  name: "Thaynan Azevedo",
+  name: "Taynan Azevedo",
   title: "Psicóloga",
   crp: "00000-0000", // PENDENTE: Atualizar com CRP real
   
@@ -33,7 +33,7 @@ export const siteConfig = {
   description: "Um espaço seguro e acolhedor para compreender seus sentimentos, relações e escolhas.",
   
   // Informações sobre
-  aboutText: "Thaynan Azevedo é psicóloga, registrada no Conselho Regional de Psicologia sob o CRP 00000, e realiza atendimento psicológico online para adolescentes e adultos.",
+  aboutText: "Taynan Azevedo é psicóloga, registrada no Conselho Regional de Psicologia sob o CRP 00000, e realiza atendimento psicológico online para adolescentes e adultos.",
   
   // Contato
   contactTagline: "ATENDIMENTO ONLINE, SEM FRONTEIRAS GEOGRÁFICAS",
@@ -41,7 +41,7 @@ export const siteConfig = {
   
   // Metadados
   metadata: {
-    title: "Thaynan Azevedo | Psicóloga",
+    title: "Taynan Azevedo | Psicóloga",
     description: "Terapia online para adolescentes e adultos. Atendimento psicológico com abordagem acolhedora e profissional.",
   },
   

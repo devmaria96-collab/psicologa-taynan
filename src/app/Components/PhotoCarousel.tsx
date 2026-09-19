@@ -154,7 +154,7 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
                 {photo.startsWith("/images/") ? (
                   <img
                     src={photo}
-                    alt={`Foto profissional de Thaynan Azevedo ${index + 1}`}
+                    alt={`Foto profissional de Taynan Azevedo ${index + 1}`}
                     draggable={false}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                   />

@@ -18,11 +18,11 @@ export default function Header() {
         <Link
           href="/"
           className="group flex min-w-0 items-center gap-2 py-3 sm:gap-3"
-          aria-label="Thaynan Azevedo — página inicial"
+          aria-label="Taynan Azevedo — página inicial"
         >
           <Image
             src="/logo.png"
-            alt="Logo Thaynan Azevedo Psicologia"
+            alt="Logo Taynan Azevedo Psicologia"
             width={44}
             height={55}
             priority
@@ -30,7 +30,7 @@ export default function Header() {
           />
           <span className="flex min-w-0 flex-col">
             <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[0.04em] text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary)] sm:text-xl">
-              THAYNAN AZEVEDO
+              TAYNAN AZEVEDO
             </span>
             <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
               Psicologia online
