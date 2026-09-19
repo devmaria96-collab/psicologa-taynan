@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
@@ -12,18 +13,28 @@ export default function Header() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[rgba(247,242,235,0.88)] backdrop-blur-xl">
-      <div className="site-shell flex min-h-20 items-center justify-between gap-6">
+    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[rgba(250,247,243,0.9)] backdrop-blur-xl">
+      <div className="site-shell flex min-h-20 items-center justify-between gap-3 sm:gap-6">
         <Link
           href="/"
-          className="group flex flex-col py-3"
+          className="group flex min-w-0 items-center gap-2 py-3 sm:gap-3"
           aria-label="Thaynan Azevedo — página inicial"
         >
-          <span className="font-display text-xl font-semibold leading-none tracking-[0.04em] text-[var(--color-text)] transition-colors group-hover:text-[var(--color-brand)]">
-            THAYNAN AZEVEDO
-          </span>
-          <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-            Psicologia online
+          <Image
+            src="/logo.png"
+            alt="Logo Thaynan Azevedo Psicologia"
+            width={44}
+            height={55}
+            priority
+            className="h-11 w-auto shrink-0 object-contain md:h-[3.25rem]"
+          />
+          <span className="flex min-w-0 flex-col">
+            <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[0.04em] text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary)] sm:text-xl">
+              THAYNAN AZEVEDO
+            </span>
+            <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
+              Psicologia online
+            </span>
           </span>
         </Link>
 
@@ -35,8 +46,8 @@ export default function Header() {
               aria-current={isActive(item.href) ? "page" : undefined}
               className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
                 isActive(item.href)
-                  ? "bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]"
-                  : "text-[var(--color-text-muted)] hover:bg-white/60 hover:text-[var(--color-text)]"
+                  ? "bg-[var(--color-soft)] text-[var(--color-primary-hover)]"
+                  : "text-[var(--color-muted)] hover:bg-[var(--color-surface-secondary)] hover:text-[var(--color-primary-hover)]"
               }`}
             >
               {item.label}

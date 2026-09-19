@@ -75,7 +75,7 @@ export default function MobileMenu() {
       {isOpen && (
         <div
           id={menuId}
-          className="fixed inset-0 z-50 flex justify-end bg-[rgba(48,45,42,0.28)] backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-50 flex justify-end bg-[rgba(53,42,36,0.3)] backdrop-blur-sm lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-labelledby={menuTitleId}
@@ -91,7 +91,7 @@ export default function MobileMenu() {
             <Link
               id={menuTitleId}
               href="/"
-                className="font-display text-xl font-semibold tracking-[0.04em] text-[var(--color-text)]"
+                className="font-display text-xl font-semibold tracking-[0.04em] text-[var(--color-foreground)]"
                 onClick={() => setIsOpen(false)}
             >
                 THAYNAN AZEVEDO
@@ -116,8 +116,8 @@ export default function MobileMenu() {
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={`rounded-2xl px-4 py-4 text-lg font-semibold transition-colors ${
                   isActive(item.href)
-                      ? "bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]"
-                      : "text-[var(--color-text-muted)] hover:bg-white/70 hover:text-[var(--color-text)]"
+                      ? "bg-[var(--color-soft)] text-[var(--color-primary-hover)]"
+                      : "text-[var(--color-muted)] hover:bg-[var(--color-surface-secondary)] hover:text-[var(--color-primary-hover)]"
                 }`}
               >
                 {item.label}
@@ -137,7 +137,7 @@ export default function MobileMenu() {
             </a>
           </nav>
 
-            <p className="mt-auto border-t border-[var(--color-border)] pt-6 text-sm leading-6 text-[var(--color-text-muted)]">
+            <p className="mt-auto border-t border-[var(--color-border)] pt-6 text-sm leading-6 text-[var(--color-muted)]">
               Atendimento psicológico online para adolescentes e adultos.
             </p>
           </div>

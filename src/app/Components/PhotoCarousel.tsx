@@ -150,7 +150,7 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
               className="flex-shrink-0 px-2 md:px-3"
               style={{ width: `${100 / photos.length}%` }}
             >
-              <div className="group aspect-[4/5] overflow-hidden rounded-[var(--radius-lg)] border border-white/70 bg-[var(--color-accent-soft)] shadow-[var(--shadow-sm)]">
+              <div className="group aspect-[4/5] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface-secondary)] shadow-[var(--shadow-sm)]">
                 {photo.startsWith("/images/") ? (
                   <img
                     src={photo}
@@ -159,8 +159,8 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                   />
                 ) : (
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.65),transparent_38%)] text-[var(--color-text-muted)]">
-                    <Images className="h-6 w-6 text-[var(--color-brand)]" aria-hidden="true" />
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.65),transparent_38%)] text-[var(--color-muted)]">
+                    <Images className="h-6 w-6 text-[var(--color-primary)]" aria-hidden="true" />
                     <span className="text-sm font-semibold">{photo}</span>
                   </div>
                 )}
@@ -181,8 +181,8 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
               aria-current={index === currentIndex ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "w-7 bg-[var(--color-brand)]"
-                  : "w-2 bg-[var(--color-text)]/20 hover:bg-[var(--color-text)]/40"
+                  ? "w-7 bg-[var(--color-primary)]"
+                  : "w-2 bg-[var(--color-foreground)]/20 hover:bg-[var(--color-accent)]"
               }`}
             />
           ))}

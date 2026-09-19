@@ -52,14 +52,14 @@ export default function About() {
       <div className="mt-20 grid gap-5 md:grid-cols-3">
         {highlights.map(({ icon: Icon, title, description }, index) => (
           <FadeIn key={title} delay={index * 100}>
-            <article className="surface-card h-full p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-strong)] hover:shadow-[var(--shadow-md)] md:p-7">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]">
+            <article className="surface-card h-full p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] md:p-7">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-soft)] text-[var(--color-primary)]">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
-              <h2 className="font-display mt-6 text-2xl font-semibold text-[var(--color-text)]">
+              <h2 className="font-display mt-6 text-2xl font-semibold text-[var(--color-foreground)]">
                 {title}
               </h2>
-              <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
+              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
                 {description}
               </p>
             </article>

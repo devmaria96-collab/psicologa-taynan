@@ -5,16 +5,16 @@ import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-surface-muted)]/55">
+    <footer className="mt-auto border-t border-[var(--color-footer)] bg-[var(--color-footer)] text-[var(--color-on-dark)]">
       <div className="site-shell grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_auto] md:items-start">
         <div className="max-w-sm">
           <Link
             href="/"
-            className="font-display text-2xl font-semibold tracking-[0.03em] text-[var(--color-text)]"
+            className="font-display text-2xl font-semibold tracking-[0.03em] text-[var(--color-on-dark)] transition-colors hover:text-[var(--color-soft)]"
           >
             {siteConfig.name}
           </Link>
-          <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
+          <p className="mt-3 text-sm leading-6 text-[var(--color-on-dark-muted)]">
             Psicologia e atendimento online para adolescentes e adultos.
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function Footer() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-brand)]"
+              className="text-sm font-semibold text-[var(--color-on-dark-muted)] transition-colors hover:text-[var(--color-soft)]"
             >
               {item.label}
             </Link>
@@ -34,9 +34,9 @@ export default function Footer() {
         <SocialLinks />
       </div>
 
-      <div className="border-t border-[var(--color-border)]">
-        <div className="site-shell flex flex-col gap-2 py-5 text-xs text-[var(--color-text-muted)] sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 {siteConfig.name}. Todos os direitos reservados.</p>
+      <div className="border-t border-white/15">
+        <div className="site-shell flex flex-col gap-2 py-5 text-xs text-[var(--color-on-dark-muted)] sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 MT. Todos os direitos reservados.</p>
           <p>Atendimento psicológico online • CRP {siteConfig.crp}</p>
         </div>
       </div>

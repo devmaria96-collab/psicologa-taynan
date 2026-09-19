@@ -18,17 +18,17 @@ function ServiceCard({
   step,
 }: ServiceCardProps & { step: number }) {
   return (
-    <article className="surface-card group relative h-full overflow-hidden p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-strong)] hover:shadow-[var(--shadow-md)] md:p-7">
-      <span className="absolute right-5 top-4 font-display text-5xl font-semibold text-[var(--color-text)]/[0.055]">
+    <article className="surface-card group relative h-full overflow-hidden p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] md:p-7">
+      <span className="absolute right-5 top-4 font-display text-5xl font-semibold text-[var(--color-accent)]/20">
         {String(step).padStart(2, "0")}
       </span>
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)] transition-transform duration-200 group-hover:scale-105">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-soft)] text-[var(--color-primary)] transition-transform duration-200 group-hover:scale-105">
         <Icon className="h-5 w-5" aria-hidden="true" />
       </div>
-      <h2 className="font-display mt-8 text-2xl font-semibold text-[var(--color-text)]">
+      <h2 className="font-display mt-8 text-2xl font-semibold text-[var(--color-foreground)]">
         {title}
       </h2>
-      <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
+      <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
         {description}
       </p>
     </article>
@@ -85,13 +85,13 @@ export default function Atendimento() {
         </div>
 
         <FadeIn delay={500}>
-          <section className="mt-16 grid items-center gap-8 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-accent-soft)] p-7 md:grid-cols-[1fr_auto] md:p-10">
+          <section className="mt-16 grid items-center gap-8 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface-secondary)] p-7 md:grid-cols-[1fr_auto] md:p-10">
             <div>
               <p className="eyebrow">Próximo passo</p>
-              <h2 className="font-display mt-3 text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
+              <h2 className="font-display mt-3 text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl">
                 Vamos conversar?
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-text-muted)] md:text-base">
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-muted)] md:text-base">
                 {siteConfig.additionalInfo}
               </p>
             </div>
