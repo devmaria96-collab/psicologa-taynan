@@ -1,5 +1,5 @@
 import About from "../sections/About";
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../Components/PageTransition";
 
 export default function Sobre() {
   return (

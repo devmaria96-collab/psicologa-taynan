@@ -2,39 +2,41 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MobileMenu from "../../components/MobileMenu";
+import { ArrowUpRight } from "lucide-react";
+import MobileMenu from "../MobileMenu";
+import { navigationItems, getWhatsAppUrl } from "../../utils/links";
 
 export default function Header() {
   const pathname = usePathname();
 
-  const menuItems = [
-    { href: "/", label: "Início" },
-    { href: "/sobre", label: "Sobre mim" },
-    { href: "/atendimento", label: "Atendimentos" },
-    { href: "/contato", label: "Contato" },
-  ];
-
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="w-full px-6 py-6 md:px-16">
-      <nav className="mx-auto flex max-w-[1200px] items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[rgba(247,242,235,0.88)] backdrop-blur-xl">
+      <div className="site-shell flex min-h-20 items-center justify-between gap-6">
         <Link
           href="/"
-          className="font-serif text-lg text-[#3D3A38] transition-colors duration-300 hover:text-[#8B7355]"
+          className="group flex flex-col py-3"
+          aria-label="Thaynan Azevedo — página inicial"
         >
-          TAYNAN AZEVEDO
+          <span className="font-display text-xl font-semibold leading-none tracking-[0.04em] text-[var(--color-text)] transition-colors group-hover:text-[var(--color-brand)]">
+            THAYNAN AZEVEDO
+          </span>
+          <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+            Psicologia online
+          </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {menuItems.map((item) => (
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">
+          {navigationItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm tracking-wide transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[#8B7355] after:transition-all after:duration-300 hover:after:w-full ${
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
                 isActive(item.href)
-                  ? "text-[#8B7355] after:w-full"
-                  : "text-[#3D3A38] hover:text-[#8B7355]"
+                  ? "bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]"
+                  : "text-[var(--color-text-muted)] hover:bg-white/60 hover:text-[var(--color-text)]"
               }`}
             >
               {item.label}
@@ -42,17 +44,19 @@ export default function Header() {
           ))}
 
           <a
-            href="https://wa.me/5511999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+            href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#3D3A38] px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#2D2A28] hover:-translate-y-0.5 hover:shadow-lg"
+            className="button button-primary ml-3"
+            aria-label="Agendar consulta pelo WhatsApp (abre em nova aba)"
           >
             Agendar consulta
+            <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
           </a>
-        </div>
+        </nav>
 
         <MobileMenu />
-      </nav>
+      </div>
     </header>
   );
 }

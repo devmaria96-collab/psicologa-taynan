@@ -1,5 +1,5 @@
 import Hero from "./sections/Hero";
-import PageTransition from "./components/PageTransition";
+import PageTransition from "./Components/PageTransition";
 
 export default function Home() {
   return (

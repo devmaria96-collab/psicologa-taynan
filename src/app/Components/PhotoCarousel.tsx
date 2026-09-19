@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Images } from "lucide-react";
 
 interface PhotoCarouselProps {
   photos: string[];
@@ -17,16 +18,19 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
   useEffect(() => {
     const updateVisibleCount = () => {
       if (typeof window !== "undefined") {
-        if (window.innerWidth >= 1024) setVisibleCount(3);
-        else if (window.innerWidth >= 768) setVisibleCount(2);
-        else setVisibleCount(1);
+        const nextCount =
+          window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+        setVisibleCount(nextCount);
+        setCurrentIndex((previous) =>
+          Math.min(previous, Math.max(0, photos.length - nextCount)),
+        );
       }
     };
 
     updateVisibleCount();
     window.addEventListener("resize", updateVisibleCount);
     return () => window.removeEventListener("resize", updateVisibleCount);
-  }, []);
+  }, [photos.length]);
 
   const nextSlide = () => {
     if (currentIndex < photos.length - visibleCount) {
@@ -109,15 +113,22 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
     return baseTranslate + (currentTranslate / (containerRef.current?.offsetWidth || 1)) * 100;
   };
 
-  // Calculate total slides
-  const totalSlides = Math.ceil(photos.length / visibleCount);
-  const currentSlide = Math.floor(currentIndex / visibleCount);
+  const totalPositions = Math.max(1, photos.length - visibleCount + 1);
 
   return (
-    <div className="relative">
+    <section
+      className="relative"
+      aria-label="Galeria de fotos"
+      aria-roledescription="carrossel"
+    >
       <div
         ref={containerRef}
-        className="overflow-hidden"
+        className="overflow-hidden rounded-[var(--radius-lg)] select-none"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowLeft") prevSlide();
+          if (event.key === "ArrowRight") nextSlide();
+        }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -127,7 +138,7 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className="flex transition-transform duration-500 ease-in-out"
+          className={`flex ease-out ${isDragging ? "" : "transition-transform duration-500"}`}
           style={{
             transform: `translateX(${getTranslateX()}%)`,
             width: `${(photos.length / visibleCount) * 100}%`,
@@ -139,16 +150,18 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
               className="flex-shrink-0 px-2 md:px-3"
               style={{ width: `${100 / photos.length}%` }}
             >
-              <div className="aspect-square rounded-2xl bg-[#FFD69B] overflow-hidden transition-transform duration-500 hover:scale-[1.02]">
+              <div className="group aspect-[4/5] overflow-hidden rounded-[var(--radius-lg)] border border-white/70 bg-[var(--color-accent-soft)] shadow-[var(--shadow-sm)]">
                 {photo.startsWith("/images/") ? (
                   <img
                     src={photo}
-                    alt={`Foto ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    alt={`Foto profissional de Thaynan Azevedo ${index + 1}`}
+                    draggable={false}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-[#3D3A38]">
-                    {photo}
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.65),transparent_38%)] text-[var(--color-text-muted)]">
+                    <Images className="h-6 w-6 text-[var(--color-brand)]" aria-hidden="true" />
+                    <span className="text-sm font-semibold">{photo}</span>
                   </div>
                 )}
               </div>
@@ -157,16 +170,19 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
         </div>
       </div>
 
-      {/* Mobile indicators */}
-      {visibleCount === 1 && (
-        <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: totalSlides }).map((_, index) => (
+      {totalPositions > 1 && (
+        <div className="mt-6 flex justify-center gap-2">
+          {Array.from({ length: totalPositions }).map((_, index) => (
             <button
+              type="button"
               key={index}
-              onClick={() => setCurrentIndex(index * visibleCount)}
-              aria-label={`Ir para slide ${index + 1}`}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "bg-[#3D3A38] w-6" : "bg-[#3D3A38] opacity-30"
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Ir para posição ${index + 1} de ${totalPositions}`}
+              aria-current={index === currentIndex ? "true" : undefined}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "w-7 bg-[var(--color-brand)]"
+                  : "w-2 bg-[var(--color-text)]/20 hover:bg-[var(--color-text)]/40"
               }`}
             />
           ))}
@@ -176,44 +192,27 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
       {photos.length > visibleCount && (
         <>
           <button
+            type="button"
             onClick={prevSlide}
             aria-label="Imagem anterior"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 rounded-full bg-[#3D3A38] p-3 text-white transition-all duration-300 hover:bg-[#2D2A28] hover:scale-110 md:-translate-x-12 z-10"
+            className="icon-button absolute left-3 top-1/2 z-10 -translate-y-1/2 shadow-[var(--shadow-md)] md:left-5"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m15 18-6-6 6-6" />
-            </svg>
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
 
           <button
+            type="button"
             onClick={nextSlide}
             aria-label="Próxima imagem"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 rounded-full bg-[#3D3A38] p-3 text-white transition-all duration-300 hover:bg-[#2D2A28] hover:scale-110 md:translate-x-12 z-10"
+            className="icon-button absolute right-3 top-1/2 z-10 -translate-y-1/2 shadow-[var(--shadow-md)] md:right-5"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
         </>
       )}
-    </div>
+      <p className="sr-only" aria-live="polite">
+        Exibindo a posição {currentIndex + 1} de {totalPositions}
+      </p>
+    </section>
   );
 }

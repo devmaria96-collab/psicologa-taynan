@@ -1,55 +1,59 @@
+import { BriefcaseBusiness, Camera, MessageCircle } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { getWhatsAppUrl } from "../utils/links";
+
 export default function SocialLinks() {
+  const links = [
+    {
+      href: getWhatsAppUrl(),
+      label: "WhatsApp",
+      icon: MessageCircle,
+      external: true,
+    },
+    {
+      href: siteConfig.instagram.url,
+      label: "Instagram",
+      icon: Camera,
+      external: siteConfig.instagram.url !== "#",
+    },
+    {
+      href: siteConfig.linkedin.url,
+      label: "LinkedIn",
+      icon: BriefcaseBusiness,
+      external: siteConfig.linkedin.url !== "#",
+    },
+  ];
+
   return (
-    <div className="flex items-center gap-4">
-      <a
-        href="#"
-        aria-label="WhatsApp"
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#3D3A38] text-sm font-bold text-white transition-all duration-300 hover:scale-110 hover:bg-[#2D2A28] hover:shadow-md"
-      >
-        W
-      </a>
+    <div className="flex items-center gap-2" aria-label="Redes sociais">
+      {links.map(({ href, label, icon: Icon, external }) => {
+        if (href === "#") {
+          return (
+            <span
+              key={label}
+              className="icon-button cursor-not-allowed opacity-40"
+              aria-label={`${label} indisponível no momento`}
+              aria-disabled="true"
+              title={`${label} em breve`}
+            >
+              <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+            </span>
+          );
+        }
 
-      <a
-        href="#"
-        aria-label="Instagram"
-        className="text-[#3D3A38] transition-all duration-300 hover:scale-110 hover:text-[#8B7355]"
-      >
-        <svg 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-        >
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-        </svg>
-      </a>
-
-      <a
-        href="#"
-        aria-label="LinkedIn"
-        className="text-[#3D3A38] transition-all duration-300 hover:scale-110 hover:text-[#8B7355]"
-      >
-        <svg 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-        >
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-          <rect width="4" height="12" x="2" y="9" />
-          <circle cx="4" cy="4" r="2" />
-        </svg>
-      </a>
+        return (
+          <a
+            key={label}
+            href={href}
+            aria-label={`${label}${external ? " (abre em nova aba)" : ""}`}
+            className="icon-button"
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+          >
+            <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+          </a>
+        );
+      })}
     </div>
   );
 }

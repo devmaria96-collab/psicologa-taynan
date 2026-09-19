@@ -1,6 +1,9 @@
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../Components/PageTransition";
 import FadeIn from "../ui/FadeIn";
-import { MessageCircle, Calendar, Video, Lock } from "lucide-react";
+import SectionTitle from "../ui/SectionTitle";
+import { ArrowRight, MessageCircle, Calendar, Video, Lock } from "lucide-react";
+import { getWhatsAppUrl } from "../utils/links";
+import { siteConfig } from "@/config/site";
 
 interface ServiceCardProps {
   icon: React.ElementType;
@@ -8,19 +11,27 @@ interface ServiceCardProps {
   description: string;
 }
 
-function ServiceCard({ icon: Icon, title, description }: ServiceCardProps) {
+function ServiceCard({
+  icon: Icon,
+  title,
+  description,
+  step,
+}: ServiceCardProps & { step: number }) {
   return (
-    <div className="h-full min-h-[320px] bg-[#FFD69B] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg flex flex-col items-center justify-start">
-      <div className="h-12 flex items-center justify-center mb-6">
-        <Icon className="w-12 h-12 text-[#3D3A38]" />
+    <article className="surface-card group relative h-full overflow-hidden p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-strong)] hover:shadow-[var(--shadow-md)] md:p-7">
+      <span className="absolute right-5 top-4 font-display text-5xl font-semibold text-[var(--color-text)]/[0.055]">
+        {String(step).padStart(2, "0")}
+      </span>
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)] transition-transform duration-200 group-hover:scale-105">
+        <Icon className="h-5 w-5" aria-hidden="true" />
       </div>
-      <h2 className="font-serif text-xl text-[#3D3A38] mb-4 text-center">
+      <h2 className="font-display mt-8 text-2xl font-semibold text-[var(--color-text)]">
         {title}
       </h2>
-      <p className="text-[#3D3A38] text-center leading-relaxed flex-1">
+      <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
         {description}
       </p>
-    </div>
+    </article>
   );
 }
 
@@ -50,31 +61,51 @@ export default function Atendimento() {
 
   return (
     <PageTransition>
-      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-10">
+      <div className="site-shell page-section">
         <FadeIn>
-          <h1 className="font-serif text-4xl leading-tight text-[#3D3A38] md:text-5xl mb-8 text-center">
-            COMO FUNCIONA O ATENDIMENTO ONLINE
-          </h1>
+          <SectionTitle
+            eyebrow="Atendimento"
+            title="Como funciona a terapia online."
+            description="Do primeiro contato ao encontro por videochamada, cada etapa é conduzida com clareza, cuidado e privacidade."
+            align="center"
+          />
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 items-stretch">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card, index) => (
-            <FadeIn key={index} delay={index * 100}>
+            <FadeIn key={card.title} delay={index * 100} className="h-full">
               <ServiceCard
                 icon={card.icon}
                 title={card.title}
                 description={card.description}
+                step={index + 1}
               />
             </FadeIn>
           ))}
         </div>
 
         <FadeIn delay={500}>
-          <div className="mt-16 text-center">
-            <p className="text-base text-[#3D3A38] max-w-2xl mx-auto leading-relaxed">
-              Informações sobre valores, duração das sessões, plataforma utilizada e demais detalhes práticos são explicadas diretamente no contato pelo WhatsApp.
-            </p>
-          </div>
+          <section className="mt-16 grid items-center gap-8 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-accent-soft)] p-7 md:grid-cols-[1fr_auto] md:p-10">
+            <div>
+              <p className="eyebrow">Próximo passo</p>
+              <h2 className="font-display mt-3 text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
+                Vamos conversar?
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-text-muted)] md:text-base">
+                {siteConfig.additionalInfo}
+              </p>
+            </div>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-primary w-full md:w-auto"
+              aria-label="Falar pelo WhatsApp (abre em nova aba)"
+            >
+              Falar pelo WhatsApp
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </section>
         </FadeIn>
       </div>
     </PageTransition>

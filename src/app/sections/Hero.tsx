@@ -1,82 +1,110 @@
 import { psychologist } from "./Content";
 import SocialLinks from "../ui/SocialLinks";
 import FadeIn from "../ui/FadeIn";
+import Link from "next/link";
+import { ArrowRight, ShieldCheck, Video } from "lucide-react";
+import { getWhatsAppUrl } from "../utils/links";
 
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-6 py-16 md:grid-cols-[55%_45%] md:px-10 md:py-20"
+      className="site-shell grid min-h-[calc(100svh-5rem)] grid-cols-1 items-center gap-14 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20 lg:py-20"
     >
-      <div className="flex flex-col">
+      <div className="flex max-w-2xl flex-col">
         <FadeIn delay={0}>
-          <p className="mb-6 text-sm tracking-widest text-[#3D3A38]">
+          <p className="eyebrow mb-6 flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[var(--color-success)]" />
             {psychologist.tagline}
           </p>
         </FadeIn>
 
         <FadeIn delay={100}>
-          <h1 className="font-serif text-4xl leading-tight text-[#3D3A38] md:text-5xl lg:text-6xl">
+          <h1 className="font-display text-balance text-[clamp(3.25rem,7.2vw,6.25rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-[var(--color-text)]">
             {psychologist.title}
           </h1>
         </FadeIn>
 
         <FadeIn delay={200}>
-          <div className="mt-8">
-            <p className="font-serif text-xl text-[#3D3A38]">
-              {psychologist.name}
+          <div className="mt-8 max-w-xl">
+            <p className="text-pretty text-lg leading-8 text-[var(--color-text-muted)]">
+              {psychologist.subtitle} {psychologist.description}
             </p>
-            <p className="font-serif text-lg text-[#3D3A38]">
+            <p className="mt-5 text-sm font-bold text-[var(--color-text)]">
+              {psychologist.name}
+              <span className="mx-2 text-[var(--color-border-strong)]" aria-hidden="true">
+                •
+              </span>
               Psicóloga • CRP {psychologist.crp}
             </p>
           </div>
         </FadeIn>
 
         <FadeIn delay={300}>
-          <p className="mt-6 text-lg text-[#3D3A38]">
-            {psychologist.subtitle}
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={400}>
-          <p className="mt-4 max-w-lg text-base leading-relaxed text-[#3D3A38]">
-            {psychologist.description}
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={500}>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="https://wa.me/5511999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[#3D3A38] px-6 py-3 text-center font-medium text-white transition-all duration-300 hover:bg-[#2D2A28] hover:-translate-y-0.5 hover:shadow-lg"
+              className="button button-primary"
+              aria-label="Agendar consulta pelo WhatsApp (abre em nova aba)"
             >
               Agendar consulta
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
-            <a
+            <Link
               href="/sobre"
-              className="rounded-full border-2 border-[#3D3A38] px-6 py-3 text-center font-medium text-[#3D3A38] transition-all duration-300 hover:bg-[#3D3A38] hover:text-white hover:-translate-y-0.5"
+              className="button button-secondary"
             >
               Conheça meu trabalho
-            </a>
+            </Link>
           </div>
         </FadeIn>
 
-        <FadeIn delay={600}>
-          <div className="mt-8">
+        <FadeIn delay={400}>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-[var(--color-border)] pt-7">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-muted)]">
+              <Video className="h-4 w-4 text-[var(--color-brand)]" aria-hidden="true" />
+              Sessões online
+            </div>
+            <div className="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-muted)]">
+              <ShieldCheck className="h-4 w-4 text-[var(--color-brand)]" aria-hidden="true" />
+              Espaço seguro
+            </div>
             <SocialLinks />
           </div>
         </FadeIn>
       </div>
 
-      <FadeIn delay={300} direction="right">
-        <div className="relative flex justify-center">
-          <div className="absolute inset-0 bg-[#FFD69B] opacity-20 rounded-tl-[150px] rounded-br-[150px] transform translate-x-4 translate-y-4"></div>
-          <div
-            className="relative flex h-[400px] w-full max-w-[430px] items-center justify-center bg-[#FFD69B] px-10 text-center text-xl text-[#3D3A38] rounded-tl-[120px] rounded-br-[120px] md:h-[530px] transition-transform duration-500 hover:scale-[1.02]"
-          >
-            Foto profissional
+      <FadeIn delay={200} direction="right">
+        <div className="relative mx-auto w-full max-w-[31rem]">
+          <div className="absolute -inset-4 -z-10 rounded-[2.75rem] bg-[var(--color-accent-soft)]/75 [transform:rotate(3deg)]" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/70 bg-[var(--color-accent)] shadow-[var(--shadow-lg)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.42),transparent_35%)]" />
+            <div className="relative flex h-full items-center justify-center px-10 text-center">
+              <div>
+                <p className="font-display text-3xl font-semibold text-[var(--color-text)]">
+                  Foto profissional
+                </p>
+                <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+                  Espaço reservado para a imagem
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="surface-card absolute -bottom-6 left-4 right-4 flex items-center gap-4 p-4 shadow-[var(--shadow-md)] sm:left-8 sm:right-auto sm:min-w-72">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]">
+              <Video className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-[var(--color-text)]">
+                Atendimento online
+              </p>
+              <p className="mt-0.5 text-xs text-[var(--color-text-muted)]">
+                Acolhimento onde você estiver
+              </p>
+            </div>
           </div>
         </div>
       </FadeIn>

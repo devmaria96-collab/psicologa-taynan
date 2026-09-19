@@ -1,104 +1,122 @@
-import PageTransition from "../components/PageTransition";
+import PageTransition from "../Components/PageTransition";
 import FadeIn from "../ui/FadeIn";
-import { MessageCircle } from "lucide-react";
+import SectionTitle from "../ui/SectionTitle";
+import {
+  ArrowUpRight,
+  CalendarDays,
+  Camera,
+  Clock3,
+  MessageCircle,
+} from "lucide-react";
+import { getWhatsAppUrl } from "../utils/links";
+import { siteConfig } from "@/config/site";
 
 export default function Contato() {
   return (
     <PageTransition>
-      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-10">
-        <div className="grid md:grid-cols-5 gap-12">
-          {/* Coluna principal - Informações de contato */}
-          <div className="md:col-span-3">
-            <FadeIn>
-              <h1 className="font-serif text-4xl leading-tight text-[#3D3A38] md:text-5xl mb-6">
-                ENTRE EM CONTATO COMIGO
-              </h1>
-              <p className="text-lg text-[#3D3A38] mb-12 tracking-wide">
-                ATENDIMENTO ONLINE, SEM FRONTEIRAS GEOGRÁFICAS
-              </p>
-            </FadeIn>
+      <div className="site-shell page-section">
+        <FadeIn>
+          <SectionTitle
+            eyebrow="Contato"
+            title="O primeiro passo pode ser uma conversa."
+            description={siteConfig.contactTagline}
+          />
+        </FadeIn>
 
-            <FadeIn delay={200}>
-              <div className="space-y-6">
-                {/* WhatsApp - Contato principal */}
-                <div className="bg-[#FFD69B] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg">
-                  <div className="flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-[#3D3A38] flex items-center justify-center">
-                        <MessageCircle className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-serif text-2xl text-[#3D3A38] mb-2">WhatsApp</h3>
-                      <p className="text-[#3D3A38] text-lg">0000-0000</p>
-                      <p className="text-sm text-[#3D3A38] mt-2 opacity-80">
-                        Contato preferencial para agendamento
-                      </p>
-                    </div>
-                  </div>
+        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <FadeIn delay={150}>
+            <div className="grid gap-4">
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="surface-card group flex items-start gap-5 p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-strong)] hover:shadow-[var(--shadow-md)] sm:items-center sm:p-8"
+                aria-label="Entrar em contato pelo WhatsApp (abre em nova aba)"
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]">
+                  <MessageCircle className="h-6 w-6" aria-hidden="true" />
                 </div>
-
-                {/* Instagram */}
-                <div className="bg-[#FFD69B] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-lg">
-                  <div className="flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-[#3D3A38] flex items-center justify-center">
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="text-white"
-                        >
-                          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-serif text-2xl text-[#3D3A38] mb-2">Instagram</h3>
-                      <p className="text-[#3D3A38] text-lg">@taynan_psico</p>
-                      <p className="text-sm text-[#3D3A38] mt-2 opacity-80">
-                        Acompanhe conteúdos sobre terapia e bem-estar
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Coluna lateral - Horário e informações */}
-          <div className="md:col-span-2">
-            <FadeIn delay={300}>
-              <div className="bg-[#FFD69B] rounded-2xl p-8 sticky top-8">
-                <h2 className="font-serif text-2xl text-[#3D3A38] mb-6">
-                  HORÁRIO PARA CONTATO E AGENDAMENTO
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3D3A38]" />
-                    <p className="text-[#3D3A38]">SEGUNDA, QUARTA E SEXTA-FEIRA</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3D3A38]" />
-                    <p className="text-[#3D3A38]">09:00 ÀS 18:00 HORAS</p>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-[#3D3A38] border-opacity-20">
-                  <p className="text-sm text-[#3D3A38] leading-relaxed">
-                    Respondo às mensagens no período de atendimento. Fora desse horário, entrarei em contato assim que possível.
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
+                    Canal preferencial
+                  </p>
+                  <h2 className="font-display mt-1 text-3xl font-semibold text-[var(--color-text)]">
+                    WhatsApp
+                  </h2>
+                  <p className="mt-1 text-sm text-[var(--color-text-muted)]">
+                    {siteConfig.whatsapp.display} • Agendamentos e informações
                   </p>
                 </div>
-              </div>
-            </FadeIn>
-          </div>
+                <ArrowUpRight className="hidden h-5 w-5 text-[var(--color-text-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:block" aria-hidden="true" />
+              </a>
+
+              <a
+                href={siteConfig.instagram.url !== "#" ? siteConfig.instagram.url : undefined}
+                target={siteConfig.instagram.url !== "#" ? "_blank" : undefined}
+                rel={siteConfig.instagram.url !== "#" ? "noopener noreferrer" : undefined}
+                aria-disabled={siteConfig.instagram.url === "#" ? "true" : undefined}
+                className={`surface-card group flex items-start gap-5 p-6 transition-[transform,box-shadow,border-color] duration-200 sm:items-center sm:p-8 ${
+                  siteConfig.instagram.url === "#"
+                    ? "cursor-not-allowed opacity-70"
+                    : "hover:-translate-y-1 hover:border-[var(--color-border-strong)] hover:shadow-[var(--shadow-md)]"
+                }`}
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-brand-strong)]">
+                  <Camera className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-brand)]">
+                    Conteúdos e novidades
+                  </p>
+                  <h2 className="font-display mt-1 text-3xl font-semibold text-[var(--color-text)]">
+                    Instagram
+                  </h2>
+                  <p className="mt-1 truncate text-sm text-[var(--color-text-muted)]">
+                    {siteConfig.instagram.username}
+                  </p>
+                </div>
+                <ArrowUpRight className="hidden h-5 w-5 text-[var(--color-text-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:block" aria-hidden="true" />
+              </a>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={250}>
+            <aside className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-text)] p-7 text-white shadow-[var(--shadow-md)] lg:sticky lg:top-28 md:p-8">
+              <p className="eyebrow !text-[var(--color-accent)]">Disponibilidade</p>
+              <h2 className="font-display mt-3 text-3xl font-semibold leading-tight">
+                Horários para contato
+              </h2>
+
+              <dl className="mt-8 space-y-5">
+                <div className="flex gap-4">
+                  <CalendarDays className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-accent)]" aria-hidden="true" />
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-[0.12em] text-white/55">
+                      Dias
+                    </dt>
+                    <dd className="mt-1 text-sm leading-6 text-white/90">
+                      {siteConfig.schedule.days}
+                    </dd>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <Clock3 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-accent)]" aria-hidden="true" />
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-[0.12em] text-white/55">
+                      Horário
+                    </dt>
+                    <dd className="mt-1 text-sm leading-6 text-white/90">
+                      {siteConfig.schedule.hours}
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+
+              <p className="mt-8 border-t border-white/15 pt-6 text-sm leading-6 text-white/65">
+                {siteConfig.contactMessage}
+              </p>
+            </aside>
+          </FadeIn>
         </div>
       </div>
     </PageTransition>
