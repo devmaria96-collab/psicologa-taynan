@@ -14,7 +14,7 @@ export default function FadeIn({
   children,
   delay = 0,
   direction = "up",
-  duration = 600,
+  duration = 800,
   className = "",
 }: FadeInProps) {
   const [ref, isVisible] = useScrollReveal();
@@ -25,15 +25,15 @@ export default function FadeIn({
     
     switch (direction) {
       case "up":
-        return "translateY(30px)";
+        return "translateY(40px)";
       case "down":
-        return "translateY(-30px)";
+        return "translateY(-40px)";
       case "left":
-        return "translateX(30px)";
+        return "translateX(40px)";
       case "right":
-        return "translateX(-30px)";
+        return "translateX(-40px)";
       default:
-        return "translateY(30px)";
+        return "translateY(40px)";
     }
   };
 
@@ -46,7 +46,7 @@ export default function FadeIn({
         transform: isVisible || prefersReducedMotion ? "none" : getTransform(),
         transition: prefersReducedMotion
           ? "none"
-          : `opacity ${duration}ms ease-out, transform ${duration}ms ease-out`,
+          : `opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
         transitionDelay: prefersReducedMotion ? "0ms" : `${delay}ms`,
       }}
     >

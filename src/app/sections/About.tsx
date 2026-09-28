@@ -33,7 +33,10 @@ export default function About() {
   ];
 
   return (
-    <div className="site-shell page-section">
+    <div className="site-shell page-section section-with-pattern">
+      {/* Subtle pattern background */}
+      <div className="absolute inset-0 pattern-radial opacity-10" />
+      
       <FadeIn>
         <SectionTitle
           eyebrow="Sobre mim"
@@ -52,11 +55,11 @@ export default function About() {
       <div className="mt-20 grid gap-5 md:grid-cols-3">
         {highlights.map(({ icon: Icon, title, description }, index) => (
           <FadeIn key={title} delay={index * 100}>
-            <article className="surface-card h-full p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] md:p-7">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-soft)] text-[var(--color-primary)]">
+            <article className="surface-card h-full p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] md:p-7 group">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--color-soft)] to-[var(--palette-beige-rose)]/50 text-[var(--color-primary)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
-              <h2 className="font-display mt-6 text-2xl font-semibold text-[var(--color-foreground)]">
+              <h2 className="font-display mt-6 text-2xl font-semibold text-[var(--color-foreground)] group-hover:text-[var(--color-primary-hover)] transition-colors">
                 {title}
               </h2>
               <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
