@@ -9,11 +9,11 @@ export default function Footer() {
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
       
-      <div className="site-shell grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_auto] md:items-start relative">
+      <div className="site-shell grid gap-8 py-10 md:grid-cols-[1.2fr_1fr_auto] md:items-start md:gap-10 md:py-12 relative">
         <div className="max-w-sm">
           <Link
             href="/"
-            className="font-display text-2xl font-semibold tracking-[0.03em] text-[var(--color-on-dark)] transition-colors hover:text-[var(--color-soft)] group relative inline-block"
+            className="font-display text-xl font-semibold tracking-[0.03em] text-[var(--color-on-dark)] transition-colors hover:text-[var(--color-soft)] group relative inline-block sm:text-2xl"
           >
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[var(--color-soft)] to-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
             {siteConfig.name}
@@ -23,7 +23,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="grid grid-cols-2 gap-x-6 gap-y-3" aria-label="Links do rodapé">
+        <nav className="grid grid-cols-2 gap-x-4 gap-y-2 sm:gap-x-6 sm:gap-y-3" aria-label="Links do rodapé">
           {navigationItems.map((item) => (
             <Link
               key={item.href}
@@ -40,7 +40,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/15 relative">
-        <div className="site-shell flex flex-col gap-2 py-5 text-xs text-[var(--color-on-dark-muted)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="site-shell flex flex-col gap-2 py-4 text-xs text-[var(--color-on-dark-muted)] sm:flex-row sm:items-center sm:justify-between sm:py-5">
           <p>© 2026 MT. Todos os direitos reservados.</p>
           <p>Atendimento psicológico online • CRP {siteConfig.crp}</p>
         </div>

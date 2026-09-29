@@ -21,7 +21,7 @@ export default function RootLayout({
           Pular para o conteúdo
         </a>
         <Header />
-        <main id="conteudo-principal" className="flex-1">
+        <main id="conteudo-principal" className="flex-1 w-full">
           {children}
         </main>
         <Footer />

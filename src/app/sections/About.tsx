@@ -35,7 +35,7 @@ export default function About() {
   return (
     <div className="site-shell page-section section-with-pattern">
       {/* Subtle pattern background */}
-      <div className="absolute inset-0 pattern-radial opacity-10" />
+      <div className="absolute inset-0 pattern-radial opacity-[0.1]" />
       
       <FadeIn>
         <SectionTitle
