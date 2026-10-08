@@ -38,7 +38,7 @@ export const siteConfig = {
   
   // Informações sobre
   aboutText:
-    "Taynan Azevedo é psicóloga, registrada no Conselho Regional de Psicologia sob o CRP 06/228999, e realiza atendimento psicológico online para adolescentes e adultos.",
+    "Sou Taynan Azevedo, nasci em 1900, e o meu maior sonho sempre foi ajudar as pessoas, porque também fui muito ajudada e sou até os dias de hoje.",
   
   // Contato
   contactTagline: "ATENDIMENTO ONLINE, SEM FRONTEIRAS GEOGRÁFICAS",

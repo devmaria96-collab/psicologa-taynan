@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/prepare-dev.mjs && next dev",
+    "dev:fresh": "node scripts/clean-next.mjs && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "node scripts/clean-next.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.46.0",

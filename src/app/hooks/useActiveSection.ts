@@ -8,7 +8,7 @@ export function useActiveSection(defaultId: string = "inicio") {
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
-    if (hash && sectionIds.includes(hash)) {
+    if (hash && (sectionIds as readonly string[]).includes(hash)) {
       setActiveId(hash);
     }
 

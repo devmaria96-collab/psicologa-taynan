@@ -1,61 +1,54 @@
 import FadeIn from "../ui/FadeIn";
-import PhotoCarousel, { type GalleryPhoto } from "../Components/PhotoCarousel";
+import HandwrittenLine from "../ui/HandwrittenLine";
+import AboutPhotos from "./AboutPhotos";
 import { siteConfig } from "@/config/site";
-
-const photos: GalleryPhoto[] = [
-  {
-    src: "/images/sobre/foto-1.jpg",
-    alt: "Taynan Azevedo, psicóloga, em retrato profissional",
-  },
-  {
-    src: "/images/sobre/foto-2.jpg",
-    alt: "Taynan Azevedo em momento de atendimento acolhedor",
-  },
-  {
-    src: "/images/sobre/foto-3.jpg",
-    alt: "Retrato editorial de Taynan Azevedo",
-  },
-  {
-    src: "/images/sobre/foto-4.jpg",
-    alt: "Taynan Azevedo em ambiente de trabalho calmo",
-  },
-  {
-    src: "/images/sobre/foto-5.jpg",
-    alt: "Fotografia profissional de Taynan Azevedo",
-  },
-];
+import { getSobrePhotos } from "../utils/photos";
 
 export default function About() {
+  const photos = getSobrePhotos();
+
   return (
     <section id="sobre" className="scroll-section border-t border-[var(--color-border)]/60">
       <div className="site-shell page-section">
-        <FadeIn>
-          <header className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow mb-4 tracking-[0.22em] text-[var(--color-muted)]">
-              Conheça a profissional
-            </p>
-            <h2 className="font-display text-balance text-[clamp(2.5rem,6vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.02em] text-[var(--color-foreground)]">
-              Muito prazer, sou Taynan.
-            </h2>
-            <p className="text-pretty mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--color-muted)] md:text-lg md:leading-8">
-              Um espaço de escuta, acolhimento e transformação.
-            </p>
-          </header>
-        </FadeIn>
+        <div className="grid items-center gap-10 md:gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-14 xl:gap-16">
+          <FadeIn>
+            <AboutPhotos photos={photos} />
+          </FadeIn>
 
-        <FadeIn delay={160}>
-          <div className="mt-12 md:mt-16">
-            <PhotoCarousel photos={photos} />
-          </div>
-        </FadeIn>
+          <FadeIn delay={120}>
+            <div className="flex flex-col justify-center lg:pl-1 xl:pl-3">
+              <h2 className="text-[clamp(1.85rem,3.6vw,2.85rem)] text-[var(--color-foreground)]">
+                <span className="sr-only">Muito prazer, sou Taynan.</span>
+                <span
+                  className="inline-flex max-w-full flex-wrap items-baseline justify-start gap-x-[0.2em] gap-y-1"
+                  aria-hidden="true"
+                >
+                  <span className="font-display shrink-0 font-medium leading-none tracking-[-0.02em]">
+                    Muito prazer,
+                  </span>
+                  <HandwrittenLine text="sou Taynan." className="min-w-0" />
+                </span>
+              </h2>
 
-        <FadeIn delay={260}>
-          <div className="mx-auto mt-14 max-w-2xl text-center md:mt-16">
-            <p className="text-pretty text-base leading-8 text-[var(--color-muted)] md:text-lg md:leading-8">
-              {siteConfig.aboutText}
-            </p>
-          </div>
-        </FadeIn>
+              <p className="text-pretty mt-7 max-w-md font-display text-[1.15rem] leading-9 text-[var(--color-muted)] md:mt-8 md:text-[1.25rem] md:leading-10">
+                {siteConfig.aboutText}
+              </p>
+
+              <div className="mt-8 border-t border-[var(--color-border)]/80 pt-6 md:mt-10">
+                <p className="font-display text-xl font-semibold tracking-[0.02em] text-[var(--color-foreground)] md:text-2xl">
+                  {siteConfig.name}
+                </p>
+                <p className="mt-1.5 text-sm font-medium text-[var(--color-muted)] md:text-[0.95rem]">
+                  Psicóloga
+                  <span className="mx-2 text-[var(--color-accent)]" aria-hidden="true">
+                    •
+                  </span>
+                  CRP {siteConfig.crp}
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

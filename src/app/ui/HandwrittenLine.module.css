@@ -1,0 +1,119 @@
+.wrap {
+  display: inline-block;
+  width: 4.55em;
+  max-width: 100%;
+  /* Altura até a baseline; descendentes ficam fora da caixa */
+  height: 1.05em;
+  margin: 0;
+  overflow: visible;
+  vertical-align: baseline;
+  flex: 0 1 auto;
+  /* Ajuste óptico: Allura senta um pouco acima da baseline da serifa */
+  transform: translateY(0.14em);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.text {
+  font-family: "Allura", "Great Vibes", "Segoe Script", cursive;
+  font-size: 78px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  fill: transparent;
+  stroke: var(--color-primary);
+  stroke-width: 1.35px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 920;
+  stroke-dashoffset: 920;
+  paint-order: stroke fill;
+}
+
+/*
+  Ciclo total: 8s
+  - 0–3s   escrita (stroke + fill)
+  - 3–7s   texto completo visível
+  - 7–8s   fade-out suave
+*/
+.animate {
+  animation: handwriting-loop 8s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+.done,
+.reduced {
+  fill: var(--color-primary-hover);
+  stroke: var(--color-primary);
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: none;
+}
+
+@keyframes handwriting-loop {
+  0% {
+    stroke-dashoffset: 920;
+    fill: transparent;
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ~2.6s: traço quase completo */
+  32.5% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+
+  /* 3s: escrita concluída com preenchimento */
+  37.5% {
+    stroke-dashoffset: 0;
+    fill: var(--color-primary-hover);
+    opacity: 1;
+    animation-timing-function: linear;
+  }
+
+  /* 7s: fim da pausa visível */
+  87.5% {
+    stroke-dashoffset: 0;
+    fill: var(--color-primary-hover);
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+
+  /* 8s: desaparece; o próximo ciclo começa em opacity 0 → sem flash */
+  100% {
+    stroke-dashoffset: 0;
+    fill: var(--color-primary-hover);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    width: 5.25em;
+    height: 1.08em;
+  }
+
+  .text {
+    font-size: 74px;
+    stroke-width: 1.2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    animation: none;
+    fill: var(--color-primary-hover);
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}

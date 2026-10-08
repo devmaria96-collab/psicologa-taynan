@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useScrollReveal, useReducedMotion } from "../hooks/index";
 
 interface FadeInProps {
@@ -19,7 +20,14 @@ export default function FadeIn({
 }: FadeInProps) {
   const [ref, isVisible] = useScrollReveal();
   const prefersReducedMotion = useReducedMotion();
-  const showContent = isVisible || prefersReducedMotion;
+  const [forceVisible, setForceVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setForceVisible(true), 250);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const showContent = isVisible || prefersReducedMotion || forceVisible;
 
   const getTransform = () => {
     if (prefersReducedMotion) return "none";

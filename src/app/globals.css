@@ -15,6 +15,7 @@
   --color-primary: var(--palette-terracotta);
   --color-primary-action: #b45423;
   --color-primary-hover: var(--palette-burnt-orange);
+  --color-burnt-orange: var(--palette-burnt-orange);
   --color-secondary: var(--palette-olive);
   --color-accent: var(--palette-caramel);
   --color-soft: #ead8c9;
@@ -102,7 +103,7 @@ button {
 }
 
 .font-script {
-  font-family: "Great Vibes", "Segoe Script", "Apple Chancery", cursive;
+  font-family: "Allura", "Great Vibes", "Segoe Script", "Apple Chancery", cursive;
   font-weight: 400;
   letter-spacing: 0.01em;
 }
@@ -329,33 +330,6 @@ img[loading="lazy"] {
 
 img[loading="lazy"].loaded {
   opacity: 1;
-}
-
-/* Menu animations */
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOutRight {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-.animate-slide-in {
-  animation: slideInRight 0.3s ease-out;
-}
-
-.animate-slide-out {
-  animation: slideOutRight 0.3s ease-in;
 }
 
 @media (prefers-reduced-motion: reduce) {

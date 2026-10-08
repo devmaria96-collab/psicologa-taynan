@@ -16,18 +16,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Great+Vibes&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+      {/*
+        No App Router, não usar <head> manual no root layout.
+        Links ficam como filhos de <html> e o Next.js os promove corretamente,
+        sem interferir na injeção do CSS compilado.
+      */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Great+Vibes&display=swap"
+        rel="stylesheet"
+      />
       <body className="flex min-h-screen flex-col antialiased">
         <a className="skip-link" href="#conteudo-principal">
           Pular para o conteúdo
