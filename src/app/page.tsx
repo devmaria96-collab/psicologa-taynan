@@ -1,10 +1,17 @@
 import Hero from "./sections/Hero";
-import PageTransition from "./Components/PageTransition";
+import About from "./sections/About";
+import Atendimento from "./sections/Atendimento";
+import Abordagem from "./sections/Abordagem";
+import Contato from "./sections/Contato";
 
 export default function Home() {
   return (
-    <PageTransition>
+    <>
       <Hero />
-    </PageTransition>
+      <About />
+      <Atendimento />
+      <Abordagem />
+      <Contato />
+    </>
   );
 }

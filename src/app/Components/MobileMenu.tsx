@@ -2,20 +2,18 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { getWhatsAppUrl, navigationItems } from "../utils/links";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const activeId = useActiveSection();
   const menuId = useId();
   const menuTitleId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-
-  const isActive = (href: string) => pathname === href;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -64,7 +62,7 @@ export default function MobileMenu() {
         ref={triggerRef}
         type="button"
         onClick={() => setIsOpen(true)}
-        className="icon-button lg:hidden"
+        className="icon-button xl:hidden"
         aria-label="Abrir menu"
         aria-expanded={isOpen}
         aria-controls={menuId}
@@ -75,7 +73,7 @@ export default function MobileMenu() {
       {isOpen && (
         <div
           id={menuId}
-          className="fixed inset-0 z-50 flex justify-end bg-[rgba(53,42,36,0.3)] backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-50 flex justify-end bg-[rgba(53,42,36,0.3)] backdrop-blur-sm xl:hidden"
           role="dialog"
           aria-modal="true"
           aria-labelledby={menuTitleId}
@@ -88,54 +86,63 @@ export default function MobileMenu() {
             className="flex h-full w-full max-w-sm flex-col border-l border-[var(--color-border)] bg-[var(--color-background)] p-6 shadow-2xl"
           >
             <div className="flex items-center justify-between">
-            <Link
-              id={menuTitleId}
-              href="/"
-                className="font-display text-xl font-semibold tracking-[0.04em] text-[var(--color-foreground)]"
+              <Link
+                id={menuTitleId}
+                href="/#inicio"
+                className="flex flex-col"
                 onClick={() => setIsOpen(false)}
-            >
-                TAYNAN AZEVEDO
-            </Link>
-            <button
+              >
+                <span className="font-display text-xl font-semibold tracking-[0.12em] text-[var(--color-foreground)]">
+                  TAYNAN AZEVEDO
+                </span>
+                <span className="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.32em] text-[var(--color-muted)]">
+                  Psicóloga
+                </span>
+              </Link>
+              <button
                 ref={closeButtonRef}
                 type="button"
-              onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(false)}
                 className="icon-button"
-              aria-label="Fechar menu"
-            >
+                aria-label="Fechar menu"
+              >
                 <X className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
+              </button>
+            </div>
 
             <nav className="mt-12 flex flex-col gap-2" aria-label="Navegação móvel">
-              {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={`rounded-2xl px-4 py-4 text-lg font-semibold transition-colors ${
-                  isActive(item.href)
-                      ? "bg-[var(--color-soft)] text-[var(--color-primary-hover)]"
-                      : "text-[var(--color-muted)] hover:bg-[var(--color-surface-secondary)] hover:text-[var(--color-primary-hover)]"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+              {navigationItems.map((item) => {
+                const isActive = activeId === item.id;
 
-            <a
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`rounded-2xl px-4 py-4 text-lg font-semibold transition-colors ${
+                      isActive
+                        ? "bg-[var(--color-soft)] text-[var(--color-primary-hover)]"
+                        : "text-[var(--color-muted)] hover:bg-[var(--color-surface-secondary)] hover:text-[var(--color-primary-hover)]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+
+              <a
                 href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="button button-primary mt-6 w-full"
                 aria-label="Agendar consulta pelo WhatsApp (abre em nova aba)"
-            >
-              Agendar consulta
+              >
+                Agendar consulta
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </nav>
+              </a>
+            </nav>
 
             <p className="mt-auto border-t border-[var(--color-border)] pt-6 text-sm leading-6 text-[var(--color-muted)]">
               Atendimento psicológico online para adolescentes e adultos.

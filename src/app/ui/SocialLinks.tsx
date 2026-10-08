@@ -2,7 +2,15 @@ import { BriefcaseBusiness, Camera, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { getWhatsAppUrl } from "../utils/links";
 
-export default function SocialLinks() {
+type SocialLinksProps = {
+  variant?: "default" | "minimal";
+  className?: string;
+};
+
+export default function SocialLinks({
+  variant = "default",
+  className = "",
+}: SocialLinksProps) {
   const links = [
     {
       href: getWhatsAppUrl(),
@@ -24,14 +32,22 @@ export default function SocialLinks() {
     },
   ];
 
+  const buttonClass =
+    variant === "minimal"
+      ? "inline-flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-foreground)] transition-colors hover:text-[var(--color-primary)]"
+      : "icon-button";
+
   return (
-    <div className="flex items-center gap-2" aria-label="Redes sociais">
+    <div
+      className={`flex items-center gap-1 ${className}`}
+      aria-label="Redes sociais"
+    >
       {links.map(({ href, label, icon: Icon, external }) => {
         if (href === "#") {
           return (
             <span
               key={label}
-              className="icon-button cursor-not-allowed opacity-40"
+              className={`${buttonClass} cursor-not-allowed opacity-40`}
               aria-label={`${label} indisponível no momento`}
               aria-disabled="true"
               title={`${label} em breve`}
@@ -46,7 +62,7 @@ export default function SocialLinks() {
             key={label}
             href={href}
             aria-label={`${label}${external ? " (abre em nova aba)" : ""}`}
-            className="icon-button"
+            className={buttonClass}
             target={external ? "_blank" : undefined}
             rel={external ? "noopener noreferrer" : undefined}
           >

@@ -2,7 +2,7 @@ export const siteConfig = {
   // Informações da profissional
   name: "Taynan Azevedo",
   title: "Psicóloga",
-  crp: "00000-0000", // PENDENTE: Atualizar com CRP real
+  crp: "06/228999",
   
   // Contatos
   whatsapp: {
@@ -28,12 +28,17 @@ export const siteConfig = {
   
   // Conteúdo do site
   tagline: "PSICOLOGIA • ATENDIMENTO ONLINE",
-  heroTitle: "Psicologia para uma vida mais leve e consciente.",
+  heroTitle: "Psicoterapia para uma vida mais leve e consciente",
+  heroHighlight: "leve e consciente",
   subtitle: "Terapia online para adolescentes e adultos.",
-  description: "Um espaço seguro e acolhedor para compreender seus sentimentos, relações e escolhas.",
+  description:
+    "Trabalho parte da escuta e do acolhimento como caminhos para a transformação.",
+  heroFooterLabel: "ATENDIMENTO ONLINE",
+  heroFooterText: "Um espaço seguro para você ser você.",
   
   // Informações sobre
-  aboutText: "Taynan Azevedo é psicóloga, registrada no Conselho Regional de Psicologia sob o CRP 00000, e realiza atendimento psicológico online para adolescentes e adultos.",
+  aboutText:
+    "Taynan Azevedo é psicóloga, registrada no Conselho Regional de Psicologia sob o CRP 06/228999, e realiza atendimento psicológico online para adolescentes e adultos.",
   
   // Contato
   contactTagline: "ATENDIMENTO ONLINE, SEM FRONTEIRAS GEOGRÁFICAS",

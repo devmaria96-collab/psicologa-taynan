@@ -1,10 +1,5 @@
-import About from "../sections/About";
-import PageTransition from "../Components/PageTransition";
+import SectionRedirect from "../Components/SectionRedirect";
 
-export default function Sobre() {
-  return (
-    <PageTransition>
-      <About />
-    </PageTransition>
-  );
+export default function SobrePage() {
+  return <SectionRedirect hash="sobre" />;
 }

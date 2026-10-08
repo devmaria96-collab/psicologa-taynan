@@ -19,21 +19,22 @@ export default function FadeIn({
 }: FadeInProps) {
   const [ref, isVisible] = useScrollReveal();
   const prefersReducedMotion = useReducedMotion();
+  const showContent = isVisible || prefersReducedMotion;
 
   const getTransform = () => {
     if (prefersReducedMotion) return "none";
-    
+
     switch (direction) {
       case "up":
-        return "translateY(40px)";
+        return "translateY(28px)";
       case "down":
-        return "translateY(-40px)";
+        return "translateY(-28px)";
       case "left":
-        return "translateX(40px)";
+        return "translateX(28px)";
       case "right":
-        return "translateX(-40px)";
+        return "translateX(-28px)";
       default:
-        return "translateY(40px)";
+        return "translateY(28px)";
     }
   };
 
@@ -42,8 +43,8 @@ export default function FadeIn({
       ref={ref}
       className={className}
       style={{
-        opacity: isVisible || prefersReducedMotion ? 1 : 0,
-        transform: isVisible || prefersReducedMotion ? "none" : getTransform(),
+        opacity: showContent ? 1 : 0,
+        transform: showContent ? "none" : getTransform(),
         transition: prefersReducedMotion
           ? "none"
           : `opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`,

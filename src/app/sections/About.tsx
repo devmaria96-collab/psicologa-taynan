@@ -1,74 +1,62 @@
 import FadeIn from "../ui/FadeIn";
-import PhotoCarousel from "../Components/PhotoCarousel";
-import SectionTitle from "../ui/SectionTitle";
-import { HeartHandshake, Laptop, Users } from "lucide-react";
+import PhotoCarousel, { type GalleryPhoto } from "../Components/PhotoCarousel";
 import { siteConfig } from "@/config/site";
 
+const photos: GalleryPhoto[] = [
+  {
+    src: "/images/sobre/foto-1.jpg",
+    alt: "Taynan Azevedo, psicóloga, em retrato profissional",
+  },
+  {
+    src: "/images/sobre/foto-2.jpg",
+    alt: "Taynan Azevedo em momento de atendimento acolhedor",
+  },
+  {
+    src: "/images/sobre/foto-3.jpg",
+    alt: "Retrato editorial de Taynan Azevedo",
+  },
+  {
+    src: "/images/sobre/foto-4.jpg",
+    alt: "Taynan Azevedo em ambiente de trabalho calmo",
+  },
+  {
+    src: "/images/sobre/foto-5.jpg",
+    alt: "Fotografia profissional de Taynan Azevedo",
+  },
+];
+
 export default function About() {
-  // Array de fotos - adicione novos caminhos de imagens aqui
-  const photos = [
-    "Foto 1", // Substituir por: "/images/sobre/foto-1.jpg"
-    "Foto 2", // Substituir por: "/images/sobre/foto-2.jpg"
-    "Foto 3", // Substituir por: "/images/sobre/foto-3.jpg"
-    "Foto 4", // Substituir por: "/images/sobre/foto-4.jpg"
-    "Foto 5", // Substituir por: "/images/sobre/foto-5.jpg"
-  ];
-
-  const highlights = [
-    {
-      icon: HeartHandshake,
-      title: "Escuta acolhedora",
-      description: "Um espaço seguro para compreender sentimentos, relações e escolhas.",
-    },
-    {
-      icon: Laptop,
-      title: "Atendimento online",
-      description: "Sessões realizadas de forma remota, com privacidade e praticidade.",
-    },
-    {
-      icon: Users,
-      title: "Adolescentes e adultos",
-      description: "Acompanhamento psicológico atento às necessidades de cada fase.",
-    },
-  ];
-
   return (
-    <div className="site-shell page-section section-with-pattern">
-      {/* Subtle pattern background */}
-      <div className="absolute inset-0 pattern-radial opacity-[0.1]" />
-      
-      <FadeIn>
-        <SectionTitle
-          eyebrow="Sobre mim"
-          title="Cuidado, presença e escuta em cada encontro."
-          description={siteConfig.aboutText}
-          align="center"
-        />
-      </FadeIn>
+    <section id="sobre" className="scroll-section border-t border-[var(--color-border)]/60">
+      <div className="site-shell page-section">
+        <FadeIn>
+          <header className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow mb-4 tracking-[0.22em] text-[var(--color-muted)]">
+              Conheça a profissional
+            </p>
+            <h2 className="font-display text-balance text-[clamp(2.5rem,6vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.02em] text-[var(--color-foreground)]">
+              Muito prazer, sou Taynan.
+            </h2>
+            <p className="text-pretty mx-auto mt-5 max-w-xl text-base leading-7 text-[var(--color-muted)] md:text-lg md:leading-8">
+              Um espaço de escuta, acolhimento e transformação.
+            </p>
+          </header>
+        </FadeIn>
 
-      <FadeIn delay={200}>
-        <div className="mt-14">
-          <PhotoCarousel photos={photos} />
-        </div>
-      </FadeIn>
+        <FadeIn delay={160}>
+          <div className="mt-12 md:mt-16">
+            <PhotoCarousel photos={photos} />
+          </div>
+        </FadeIn>
 
-      <div className="mt-20 grid gap-5 md:grid-cols-3">
-        {highlights.map(({ icon: Icon, title, description }, index) => (
-          <FadeIn key={title} delay={index * 100}>
-            <article className="surface-card h-full p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] md:p-7 group">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--color-soft)] to-[var(--palette-beige-rose)]/50 text-[var(--color-primary)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
-                <Icon className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h2 className="font-display mt-6 text-2xl font-semibold text-[var(--color-foreground)] group-hover:text-[var(--color-primary-hover)] transition-colors">
-                {title}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                {description}
-              </p>
-            </article>
-          </FadeIn>
-        ))}
+        <FadeIn delay={260}>
+          <div className="mx-auto mt-14 max-w-2xl text-center md:mt-16">
+            <p className="text-pretty text-base leading-8 text-[var(--color-muted)] md:text-lg md:leading-8">
+              {siteConfig.aboutText}
+            </p>
+          </div>
+        </FadeIn>
       </div>
-    </div>
+    </section>
   );
 }

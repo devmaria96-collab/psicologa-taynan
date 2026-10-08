@@ -43,18 +43,20 @@ html {
   background: var(--color-background);
   color: var(--color-foreground);
   text-rendering: optimizeLegibility;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6rem;
+}
+
+.scroll-section {
+  scroll-margin-top: 6rem;
 }
 
 body {
   min-width: 320px;
-  background:
-    radial-gradient(circle at 8% 8%, rgba(217, 191, 168, 0.24), transparent 28rem),
-    var(--color-background);
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family:
-    "Aptos", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system,
-    sans-serif;
+    "DM Sans", "Aptos", "Segoe UI Variable", "Segoe UI", system-ui,
+    -apple-system, sans-serif;
 }
 
 ::selection {
@@ -95,7 +97,25 @@ button {
 }
 
 .font-display {
-  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-family:
+    "Cormorant Garamond", "Iowan Old Style", "Baskerville", Georgia, serif;
+}
+
+.font-script {
+  font-family: "Great Vibes", "Segoe Script", "Apple Chancery", cursive;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.photo-arch {
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+.botanical {
+  pointer-events: none;
+  color: var(--palette-olive);
+  opacity: 0.22;
 }
 
 .site-shell {

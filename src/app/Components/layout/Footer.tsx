@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="site-shell grid gap-8 py-10 md:grid-cols-[1.2fr_1fr_auto] md:items-start md:gap-10 md:py-12 relative">
         <div className="max-w-sm">
           <Link
-            href="/"
+            href="/#inicio"
             className="font-display text-xl font-semibold tracking-[0.03em] text-[var(--color-on-dark)] transition-colors hover:text-[var(--color-soft)] group relative inline-block sm:text-2xl"
           >
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[var(--color-soft)] to-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
