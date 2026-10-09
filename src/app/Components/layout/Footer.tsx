@@ -19,7 +19,7 @@ export default function Footer() {
             {siteConfig.name}
           </Link>
           <p className="mt-3 text-sm leading-6 text-[var(--color-on-dark-muted)]">
-            Psicologia e atendimento online para adolescentes e adultos.
+            Psicoterapia online para adolescentes e adultos e palestras.
           </p>
         </div>
 

@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 export const navigationItems = [
   { id: "inicio", href: "/#inicio", label: "Início" },
   { id: "sobre", href: "/#sobre", label: "Sobre mim" },
-  { id: "atendimento", href: "/#atendimento", label: "Atendimento" },
+  { id: "atendimento", href: "/#atendimento", label: "Meus Serviços" },
   { id: "abordagem", href: "/#abordagem", label: "Abordagem" },
   { id: "contato", href: "/#contato", label: "Contato" },
 ] as const;

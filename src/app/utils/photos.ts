@@ -1,7 +1,7 @@
 import { existsSync } from "fs";
 import path from "path";
 
-export type SitePhoto = {
+export type TrajectoryMoment = {
   src: string;
   alt: string;
   available: boolean;
@@ -37,7 +37,7 @@ const SOBRE_PHOTOS = [
   },
 ] as const;
 
-export function getSobrePhotos(): SitePhoto[] {
+export function getSobrePhotos(): TrajectoryMoment[] {
   const directory = path.join(process.cwd(), "public", "images", "sobre");
 
   return SOBRE_PHOTOS.map((photo) => {

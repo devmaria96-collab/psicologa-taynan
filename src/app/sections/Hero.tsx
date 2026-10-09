@@ -100,7 +100,7 @@ export default function Hero() {
             </FadeIn>
 
             <FadeIn delay={100}>
-              <h1 className="font-display text-balance text-[clamp(2.35rem,5.4vw,4.35rem)] font-medium leading-[1.08] tracking-[-0.02em] text-[var(--color-foreground)]">
+              <h1 className="font-display text-balance text-[clamp(1.65rem,3.6vw,2.75rem)] font-medium leading-[1.18] tracking-[-0.02em] text-[var(--color-foreground)]">
                 {titleBase}{" "}
                 <em className="font-medium italic text-[var(--color-primary)]">
                   {siteConfig.heroHighlight}
@@ -109,12 +109,18 @@ export default function Hero() {
             </FadeIn>
 
             <FadeIn delay={180}>
-              <p className="text-pretty mt-6 max-w-md text-[0.975rem] leading-7 text-[var(--color-muted)] sm:mt-7 sm:text-base sm:leading-8">
+              <p className="text-pretty mt-6 max-w-lg text-[0.975rem] leading-7 text-[var(--color-muted)] sm:mt-7 sm:text-base sm:leading-8">
                 {siteConfig.description}
               </p>
             </FadeIn>
 
-            <FadeIn delay={240}>
+            <FadeIn delay={220}>
+              <p className="mt-5 font-display text-base font-medium tracking-[0.01em] text-[var(--color-primary)] sm:mt-6 sm:text-lg">
+                {siteConfig.subtitle}
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={260}>
               <p className="mt-6 text-sm font-medium tracking-[0.01em] text-[var(--color-foreground)] sm:mt-7">
                 {siteConfig.name}
                 <span className="mx-2 text-[var(--color-accent)]" aria-hidden="true">

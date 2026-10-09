@@ -1,6 +1,7 @@
-import { BriefcaseBusiness, Camera, MessageCircle } from "lucide-react";
+import { BriefcaseBusiness, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { getWhatsAppUrl } from "../utils/links";
+import InstagramIcon from "./InstagramIcon";
 
 type SocialLinksProps = {
   variant?: "default" | "minimal";
@@ -21,7 +22,7 @@ export default function SocialLinks({
     {
       href: siteConfig.instagram.url,
       label: "Instagram",
-      icon: Camera,
+      icon: InstagramIcon,
       external: siteConfig.instagram.url !== "#",
     },
     {

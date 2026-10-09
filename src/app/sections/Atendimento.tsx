@@ -1,17 +1,18 @@
+import type { ElementType } from "react";
 import FadeIn from "../ui/FadeIn";
 import SectionTitle from "../ui/SectionTitle";
-import { ArrowRight, MessageCircle, Calendar, Video, Lock } from "lucide-react";
-import { getWhatsAppUrl } from "../utils/links";
-import { siteConfig } from "@/config/site";
+import { Video, Mic, Heart, Handshake } from "lucide-react";
 
 interface ServiceCardProps {
-  icon: React.ElementType;
+  icon: ElementType;
   title: string;
-  description: string;
+  description: string | readonly string[];
   step: number;
 }
 
 function ServiceCard({ icon: Icon, title, description, step }: ServiceCardProps) {
+  const paragraphs = Array.isArray(description) ? description : [description];
+
   return (
     <article className="surface-card group relative h-full overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-md)] sm:p-6 md:p-7">
       <span className="absolute right-4 top-3 font-display text-4xl font-semibold text-[var(--color-accent)]/20 transition-all duration-300 group-hover:scale-110 group-hover:text-[var(--color-primary)]/30 sm:right-5 sm:top-4 sm:text-5xl">
@@ -23,7 +24,13 @@ function ServiceCard({ icon: Icon, title, description, step }: ServiceCardProps)
       <h3 className="font-display mt-6 text-xl font-semibold text-[var(--color-foreground)] transition-colors group-hover:text-[var(--color-primary-hover)] sm:mt-8 sm:text-2xl">
         {title}
       </h3>
-      <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">{description}</p>
+      <div className="mt-3 space-y-3">
+        {paragraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)} className="text-sm leading-6 text-[var(--color-muted)]">
+            {paragraph}
+          </p>
+        ))}
+      </div>
     </article>
   );
 }
@@ -31,44 +38,46 @@ function ServiceCard({ icon: Icon, title, description, step }: ServiceCardProps)
 export default function Atendimento() {
   const cards = [
     {
-      icon: MessageCircle,
-      title: "Entre em contato",
-      description:
-        "O primeiro contato pode ser realizado pelo WhatsApp para conhecer o funcionamento do atendimento e consultar a disponibilidade de horários.",
-    },
-    {
-      icon: Calendar,
-      title: "Agendamento",
-      description:
-        "Após a definição do dia e do horário, serão fornecidas as orientações necessárias para o atendimento.",
-    },
-    {
       icon: Video,
-      title: "Encontro online",
+      title: "Terapia online",
       description:
-        "A sessão acontece por videochamada, em ambiente virtual previamente combinado.",
+        "Ofereço terapia online para adolescentes e adultos, com a comodidade de realizar as sessões sem sair de casa.",
     },
     {
-      icon: Lock,
-      title: "Privacidade",
+      icon: Mic,
+      title: "Palestras e rodas de conversa",
       description:
-        "Para aproveitar melhor o encontro, recomenda-se estar em um local reservado, tranquilo e com conexão estável à internet.",
+        "Espaços de diálogo, troca de experiências e reflexão sobre saúde emocional, acolhimento e os desafios presentes no cotidiano, promovendo a escuta e a construção coletiva de conhecimento.",
     },
-  ];
+    {
+      icon: Heart,
+      title: "Experiências",
+      description:
+        "Atuação com pessoas que convivem com doenças crônicas, pessoas com deficiência (PCD) e pessoas com doenças raras.",
+    },
+    {
+      icon: Handshake,
+      title: "Parcerias",
+      description:
+        "Empresas, instituições e projetos que valorizem o bem-estar emocional e a saúde.",
+    },
+  ] as const;
 
   return (
     <section id="atendimento" className="scroll-section border-t border-[var(--color-border)]/60">
       <div className="site-shell page-section">
         <FadeIn>
           <SectionTitle
-            eyebrow="Atendimento"
-            title="Como funciona a terapia online."
-            description="Do primeiro contato ao encontro por videochamada, cada etapa é conduzida com clareza, cuidado e privacidade."
+            title="Meus serviços"
+            description={[
+              "Um espaço de escuta, acolhimento e cuidado para compreender o que você vive e construir novas formas de se relacionar consigo e com suas experiências.",
+              "Meu trabalho é fundamentado na Terapia de Aceitação e Compromisso (ACT), considerando a singularidade, a história e aquilo que é significativo para cada pessoa.",
+            ]}
             align="center"
           />
         </FadeIn>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card, index) => (
             <FadeIn key={card.title} delay={index * 80} className="h-full">
               <ServiceCard
@@ -80,30 +89,6 @@ export default function Atendimento() {
             </FadeIn>
           ))}
         </div>
-
-        <FadeIn delay={320}>
-          <div className="mt-12 grid items-center gap-6 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface-secondary)]/70 p-5 sm:mt-16 sm:gap-8 sm:p-7 md:grid-cols-[1fr_auto] md:p-10">
-            <div>
-              <p className="eyebrow">Próximo passo</p>
-              <h3 className="font-display mt-3 text-2xl font-semibold leading-tight text-[var(--color-foreground)] sm:text-3xl md:text-4xl">
-                Vamos conversar?
-              </h3>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-muted)] sm:text-base">
-                {siteConfig.additionalInfo}
-              </p>
-            </div>
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button button-primary w-full md:w-auto"
-              aria-label="Falar pelo WhatsApp (abre em nova aba)"
-            >
-              Falar pelo WhatsApp
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

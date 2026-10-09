@@ -1,0 +1,248 @@
+.root {
+  --tc-gap: 0.9rem;
+  --tc-visible: 1.36;
+  --tc-duration: 800ms;
+  --tc-progress: 0;
+  --tc-slide-w: 280px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.viewportDragging {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  gap: var(--tc-gap);
+  will-change: transform;
+  transition: transform var(--tc-duration) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trackInstant {
+  transition: none;
+}
+
+.slide {
+  flex: 0 0 var(--tc-slide-w);
+  width: var(--tc-slide-w);
+  min-width: 0;
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 1.05rem;
+  background: var(--color-surface-secondary);
+  box-shadow: 0 8px 22px rgb(53 42 36 / 0.05);
+}
+
+.image,
+.placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.placeholder {
+  background: linear-gradient(
+    160deg,
+    var(--color-soft),
+    var(--color-surface-secondary) 55%,
+    var(--palette-beige) 100%
+  );
+}
+
+.caption {
+  margin-top: 0.85rem;
+  padding-inline: 0.15rem;
+}
+
+.captionIndex {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.captionTitle {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: "Cormorant Garamond", "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-foreground);
+  line-height: 1.25;
+}
+
+.captionMeta {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.captionMeta:empty {
+  display: none;
+}
+
+.timerBar {
+  margin-top: 0.9rem;
+  height: 2px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-border);
+}
+
+.timerBarFill {
+  display: block;
+  height: 100%;
+  width: calc(var(--tc-progress) * 100%);
+  background: var(--color-primary);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  min-width: 0;
+}
+
+.progressItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 0;
+  padding: 0.15rem 0;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition: color 220ms ease;
+}
+
+.progressItem[data-active="true"] {
+  color: var(--color-primary);
+}
+
+.progressItem:hover {
+  color: var(--color-foreground);
+}
+
+.progressItem:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.progressSep {
+  color: var(--color-border-hover);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  user-select: none;
+}
+
+.arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  color: var(--color-muted);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.arrow:hover {
+  color: var(--color-foreground);
+  border-color: var(--color-border-hover);
+  background: var(--color-surface);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.reduced .track {
+  transition: none;
+}
+
+@media (max-width: 1024px) {
+  .root {
+    --tc-visible: 1.4;
+    --tc-gap: 0.8rem;
+  }
+
+  .frame {
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .root {
+    --tc-visible: 1.22;
+    --tc-gap: 0.7rem;
+  }
+
+  .frame {
+    border-radius: 0.9rem;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .arrows {
+    align-self: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+}
