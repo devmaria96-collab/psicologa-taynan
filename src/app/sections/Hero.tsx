@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FadeIn from "../ui/FadeIn";
 import SocialLinks from "../ui/SocialLinks";
 import { ArrowRight } from "lucide-react";
@@ -66,27 +67,14 @@ export default function Hero() {
               <BotanicalAccent className="absolute -right-4 bottom-10 h-24 w-16 rotate-[18deg] scale-x-[-1] sm:-right-8 sm:h-32 sm:w-20" />
 
               <div className="photo-arch relative mx-auto aspect-[3/4] w-[88%] bg-[var(--color-surface-secondary)] sm:w-[85%]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,253,250,0.45),transparent_55%)]" />
-                {/* Placeholder elegante até haver foto profissional em /public */}
-                <div className="relative flex h-full w-full flex-col items-center justify-center px-6 text-center">
-                  <p className="font-display text-2xl font-medium tracking-wide text-[var(--color-foreground)] sm:text-3xl">
-                    Foto profissional
-                  </p>
-                  <p className="mt-2 max-w-[14rem] text-sm leading-6 text-[var(--color-muted)]">
-                    Espaço reservado para a fotografia em formato arco
-                  </p>
-                </div>
-                {/*
-                  Quando a foto estiver disponível, use:
-                  <Image
-                    src="/images/taynan-hero.jpg"
-                    alt="Taynan Azevedo, psicóloga"
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 85vw, 45vw"
-                  />
-                */}
+                <Image
+                  src="/imagens/psico.jpg"
+                  alt="Taynan Azevedo, psicóloga, com o jaleco de psicologia ao lado de uma janela."
+                  fill
+                  priority
+                  className="object-cover object-[center_68%]"
+                  sizes="(max-width: 1024px) 80vw, 42vw"
+                />
               </div>
             </div>
           </FadeIn>
@@ -141,9 +129,9 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="button button-primary"
-                  aria-label="Agendar consulta pelo WhatsApp (abre em nova aba)"
+                  aria-label="Entre em contato pelo WhatsApp (abre em nova aba)"
                 >
-                  Agendar consulta
+                  Entre em contato pelo WhatsApp
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>

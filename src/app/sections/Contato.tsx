@@ -1,6 +1,7 @@
 import type { ElementType } from "react";
 import FadeIn from "../ui/FadeIn";
-import { ArrowUpRight, Clock3, MessageCircle, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { WhatsAppIcon } from "../ui/BrandIcons";
 import { getWhatsAppUrl } from "../utils/links";
 import { siteConfig } from "@/config/site";
 import InstagramIcon from "../ui/InstagramIcon";
@@ -55,69 +56,63 @@ export default function Contato() {
   return (
     <section id="contato" className="scroll-section border-t border-[var(--color-border)]/60">
       <div className="site-shell page-section">
-        <div className="grid items-start gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:gap-20">
-          <FadeIn>
-            <div className="max-w-xl">
-              <p className="eyebrow">Contato</p>
-              <h2 className="font-display mt-4 text-balance text-[clamp(2.2rem,5vw,3.85rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[var(--color-foreground)]">
-                Toda transformação começa com uma conversa.
-              </h2>
-              <p className="text-pretty mt-6 max-w-md text-base leading-8 text-[var(--color-muted)] md:text-lg md:leading-8">
-                Se você sente que é o momento de olhar para si com mais carinho, estou aqui
-                para te acolher. Vamos conversar?
-              </p>
-            </div>
+        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-0">
+          <FadeIn className="lg:pr-14 xl:pr-16">
+            <h2 className="font-display text-balance text-[clamp(1.85rem,3.2vw,2.65rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--color-foreground)]">
+              Disponibilidade para atendimento
+            </h2>
+            <ul className="mt-6 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2">
+              {siteConfig.availability.map(({ day, periods }) => (
+                <li
+                  key={day}
+                  className="rounded-[var(--radius-md)] border border-[var(--color-border)]/80 bg-[var(--color-surface)] px-4 py-4"
+                >
+                  <p className="font-display text-lg font-semibold leading-tight text-[var(--color-foreground)]">
+                    {day}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-6 text-[var(--color-muted)]">{periods}</p>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button-primary mt-7"
+              aria-label="Vamos conversar? Abre o WhatsApp em uma nova aba"
+            >
+              Vamos conversar?
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
           </FadeIn>
 
-          <FadeIn delay={120}>
-            <div className="w-full">
-              <div className="border-t border-[var(--color-border)]/80">
-                <ContactChannel
-                  href={getWhatsAppUrl()}
-                  icon={MessageCircle}
-                  name="WhatsApp"
-                  detail="Agendamentos e informações"
-                  ariaLabel="Entrar em contato pelo WhatsApp (abre em nova aba)"
-                />
-                <ContactChannel
-                  href={siteConfig.instagram.url}
-                  icon={InstagramIcon}
-                  name="Instagram"
-                  detail={siteConfig.instagram.username}
-                  ariaLabel="Abrir Instagram de Taynan Azevedo (abre em nova aba)"
-                />
-                <ContactChannel
-                  href={`mailto:${siteConfig.email.address}`}
-                  icon={Mail}
-                  name="E-mail"
-                  detail={siteConfig.email.address}
-                  ariaLabel="Enviar e-mail para Taynan Azevedo"
-                  external={false}
-                />
-              </div>
-
-              <div className="mt-9 md:mt-11">
-                <div className="flex items-start gap-3">
-                  <Clock3
-                    className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-primary)]"
-                    strokeWidth={1.6}
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <h3 className="font-display text-lg font-semibold tracking-[0.01em] text-[var(--color-foreground)] md:text-xl">
-                      Horários para contato
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                      {siteConfig.schedule.days}
-                      <br />
-                      {siteConfig.schedule.hours}
-                    </p>
-                    <p className="mt-5 max-w-sm border-t border-[var(--color-border)]/70 pt-5 text-sm leading-7 text-[var(--color-muted)]">
-                      {siteConfig.contactMessage}
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <FadeIn
+            delay={120}
+            className="border-t border-[var(--color-border)]/70 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-14 xl:pl-16"
+          >
+            <div className="border-t border-[var(--color-border)]/80">
+              <ContactChannel
+                href={getWhatsAppUrl()}
+                icon={WhatsAppIcon}
+                name="WhatsApp"
+                detail={siteConfig.whatsapp.display}
+                ariaLabel="Entrar em contato pelo WhatsApp (abre em nova aba)"
+              />
+              <ContactChannel
+                href="https://www.instagram.com/taynanazevedopsi/"
+                icon={InstagramIcon}
+                name="Instagram"
+                detail={siteConfig.instagram.username}
+                ariaLabel="Abrir Instagram de Taynan Azevedo (abre em nova aba)"
+              />
+              <ContactChannel
+                href={`mailto:${siteConfig.email.address}`}
+                icon={Mail}
+                name="E-mail"
+                detail={siteConfig.email.address}
+                ariaLabel="Enviar e-mail para Taynan Azevedo"
+                external={false}
+              />
             </div>
           </FadeIn>
         </div>

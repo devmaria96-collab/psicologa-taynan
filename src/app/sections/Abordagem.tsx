@@ -1,6 +1,11 @@
 import FadeIn from "../ui/FadeIn";
 import SectionTitle from "../ui/SectionTitle";
-import { siteConfig } from "@/config/site";
+
+const paragraphs = [
+  "A Terapia de Aceitação e Compromisso (ACT) é uma abordagem terapêutica que convida você a desenvolver uma relação mais acolhedora com seus pensamentos, sentimentos e experiências, inclusive nos momentos difíceis.",
+  "Ao longo do processo terapêutico, trabalhamos o reconhecimento das emoções, a atenção ao momento presente e a compreensão dos valores que dão sentido à sua vida. A proposta não é eliminar o sofrimento, mas aprender a lidar com ele de maneira mais flexível e consciente, construindo caminhos que estejam alinhados com o que realmente importa para você.",
+  "Cada processo é único, respeitando sua história, seu tempo e suas particularidades.",
+] as const;
 
 export default function Abordagem() {
   return (
@@ -9,24 +14,9 @@ export default function Abordagem() {
         <FadeIn>
           <SectionTitle
             eyebrow="Abordagem"
-            title="Um encontro pautado pela escuta e pelo cuidado."
-            description="A psicoterapia é um espaço de acolhimento e reflexão, construído com presença, ética e respeito ao ritmo de cada pessoa."
+            title="Terapia de Aceitação e Compromisso (ACT)"
+            description={paragraphs}
           />
-        </FadeIn>
-
-        <FadeIn delay={120}>
-          <div className="mt-14 max-w-3xl space-y-5 text-base leading-8 text-[var(--color-muted)] md:text-lg">
-            <p>
-              O trabalho de {siteConfig.name} parte da escuta atenta e do
-              acolhimento como caminhos para a compreensão de si e para
-              transformações possíveis no cotidiano.
-            </p>
-            <p>
-              Cada processo é único. Por isso, o atendimento é conduzido com
-              sensibilidade às necessidades de adolescentes e adultos, em um
-              ambiente online seguro e confidencial.
-            </p>
-          </div>
         </FadeIn>
       </div>
     </section>

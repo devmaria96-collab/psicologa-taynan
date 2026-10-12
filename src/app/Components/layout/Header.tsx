@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import InstagramIcon from "../../ui/InstagramIcon";
 import { navigationItems, getWhatsAppUrl } from "../../utils/links";
 import { useActiveSection } from "../../hooks/useActiveSection";
 
@@ -61,6 +63,16 @@ export default function Header() {
               })}
             </div>
           </nav>
+
+          <a
+            href={siteConfig.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon-button shrink-0"
+            aria-label="Instagram de Taynan Azevedo (abre em nova aba)"
+          >
+            <InstagramIcon className="h-[1.125rem] w-[1.125rem]" />
+          </a>
 
           <a
             href={getWhatsAppUrl()}

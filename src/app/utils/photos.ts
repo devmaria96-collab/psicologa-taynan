@@ -11,37 +11,42 @@ export type TrajectoryMoment = {
 
 const SOBRE_PHOTOS = [
   {
-    file: "foto-1.jpg",
+    file: "sofa.png.jpeg",
+    alt: "Taynan Azevedo, psicóloga, sentada em um sofá com o jaleco de psicologia",
+    objectPosition: "center 30%",
+  },
+  {
+    file: "cafe.jpg",
+    alt: "Taynan Azevedo em um café, com uma xícara vermelha",
+    objectPosition: "center 35%",
+  },
+  {
+    file: "foto1.jpg",
     alt: "Taynan Azevedo, psicóloga, em retrato profissional",
-    objectPosition: "center 18%",
-  },
-  {
-    file: "foto-2.jpg",
-    alt: "Taynan Azevedo em momento profissional",
-    objectPosition: "center 22%",
-  },
-  {
-    file: "foto-3.jpg",
-    alt: "Retrato editorial de Taynan Azevedo",
     objectPosition: "center 20%",
   },
   {
-    file: "foto-4.jpg",
-    alt: "Taynan Azevedo em ensaio fotográfico",
-    objectPosition: "center 16%",
+    file: "palestra.jpg",
+    alt: "Taynan Azevedo apresentando uma palestra",
+    objectPosition: "22% center",
   },
   {
-    file: "foto-5.jpg",
-    alt: "Retrato de Taynan Azevedo em ambiente acolhedor",
-    objectPosition: "center 24%",
+    file: "palestra2.jpg",
+    alt: "Taynan Azevedo durante uma palestra sobre doença crônica",
+    objectPosition: "20% center",
+  },
+  {
+    file: "tay.jpg",
+    alt: "Taynan Azevedo em retrato com blusa verde",
+    objectPosition: "center 18%",
   },
 ] as const;
 
 export function getSobrePhotos(): TrajectoryMoment[] {
-  const directory = path.join(process.cwd(), "public", "images", "sobre");
+  const directory = path.join(process.cwd(), "public", "imagens");
 
   return SOBRE_PHOTOS.map((photo) => {
-    const src = `/images/sobre/${photo.file}`;
+    const src = `/imagens/${photo.file}`;
     return {
       src,
       alt: photo.alt,

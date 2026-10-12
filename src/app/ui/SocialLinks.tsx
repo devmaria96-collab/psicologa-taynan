@@ -1,6 +1,7 @@
-import { BriefcaseBusiness, MessageCircle } from "lucide-react";
+import { BriefcaseBusiness } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { getWhatsAppUrl } from "../utils/links";
+import { WhatsAppIcon } from "./BrandIcons";
 import InstagramIcon from "./InstagramIcon";
 
 type SocialLinksProps = {
@@ -16,7 +17,7 @@ export default function SocialLinks({
     {
       href: getWhatsAppUrl(),
       label: "WhatsApp",
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
       external: true,
     },
     {
@@ -44,19 +45,7 @@ export default function SocialLinks({
       aria-label="Redes sociais"
     >
       {links.map(({ href, label, icon: Icon, external }) => {
-        if (href === "#") {
-          return (
-            <span
-              key={label}
-              className={`${buttonClass} cursor-not-allowed opacity-40`}
-              aria-label={`${label} indisponível no momento`}
-              aria-disabled="true"
-              title={`${label} em breve`}
-            >
-              <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
-            </span>
-          );
-        }
+        if (href === "#") return null;
 
         return (
           <a

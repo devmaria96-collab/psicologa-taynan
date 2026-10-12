@@ -58,6 +58,12 @@
   pointer-events: none;
 }
 
+/* O CSS global zera a opacidade de img[loading="lazy"] até a classe .loaded.
+   Nada no projeto adiciona essa classe, então só os dois slides com priority apareciam. */
+.frame img[loading="lazy"] {
+  opacity: 1;
+}
+
 .placeholder {
   background: linear-gradient(
     160deg,
@@ -209,10 +215,23 @@
   transition: none;
 }
 
+@media (min-width: 64rem) {
+  .root {
+    --tc-visible: 1.26;
+    --tc-gap: 0.6rem;
+  }
+
+  .frame {
+    max-height: 34rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .root {
-    --tc-visible: 1.4;
-    --tc-gap: 0.8rem;
+    --tc-visible: 1.35;
+    --tc-gap: 0.55rem;
+    max-width: 30rem;
+    margin-inline: auto;
   }
 
   .frame {
@@ -222,11 +241,13 @@
 
 @media (max-width: 640px) {
   .root {
-    --tc-visible: 1.22;
-    --tc-gap: 0.7rem;
+    --tc-visible: 1.35;
+    --tc-gap: 0.5rem;
+    max-width: none;
   }
 
   .frame {
+    max-height: 22.5rem;
     border-radius: 0.9rem;
   }
 

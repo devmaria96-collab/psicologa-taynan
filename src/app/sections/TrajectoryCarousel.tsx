@@ -78,8 +78,12 @@ export default function TrajectoryCarousel({ moments }: TrajectoryCarouselProps)
     if (!viewport || !root) return;
 
     const computed = getComputedStyle(root);
+    const track = viewport.firstElementChild;
+    const gapRaw = track ? getComputedStyle(track).columnGap : "";
+    const parsedGap = Number.parseFloat(gapRaw);
     const visible = Number.parseFloat(computed.getPropertyValue("--tc-visible")) || 2.15;
-    const nextGap = Number.parseFloat(computed.getPropertyValue("--tc-gap")) || 16;
+    // columnGap já vem em px. --tc-gap é em rem e parseFloat("0.9rem") viraria 0.9px.
+    const nextGap = Number.isFinite(parsedGap) ? parsedGap : 16;
     const width = (viewport.clientWidth - nextGap * (visible - 1)) / visible;
 
     setGap(nextGap);
@@ -316,7 +320,7 @@ export default function TrajectoryCarousel({ moments }: TrajectoryCarouselProps)
                     src={moment.src}
                     alt={moment.alt}
                     fill
-                    sizes="(max-width: 640px) 82vw, (max-width: 1024px) 42vw, 340px"
+                    sizes="(max-width: 640px) 70vw, (max-width: 1024px) 42vw, 400px"
                     priority={index < 2}
                     className={styles.image}
                     style={{ objectPosition: moment.objectPosition }}

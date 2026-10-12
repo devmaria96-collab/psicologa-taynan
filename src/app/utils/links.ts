@@ -11,6 +11,5 @@ export const navigationItems = [
 export const sectionIds = navigationItems.map((item) => item.id);
 
 export function getWhatsAppUrl() {
-  const message = encodeURIComponent(siteConfig.whatsapp.message);
-  return `https://wa.me/${siteConfig.whatsapp.fullNumber}?text=${message}`;
+  return `https://wa.me/${siteConfig.whatsapp.fullNumber}`;
 }

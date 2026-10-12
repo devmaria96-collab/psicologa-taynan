@@ -6,14 +6,13 @@ export const siteConfig = {
   
   // Contatos
   whatsapp: {
-    display: "0000-0000", // PENDENTE: Atualizar com número real
-    fullNumber: "5511999999999", // PENDENTE: Atualizar com número real (55 + DDD + número)
-    message: "Olá, gostaria de agendar uma consulta.",
+    display: "+55 12 99222-4951",
+    fullNumber: "5512992224951",
   },
   
   instagram: {
-    username: "@taynan_psico",
-    url: "#", // PENDENTE: Atualizar com URL real
+    username: "@taynanazevedopsi",
+    url: "https://www.instagram.com/taynanazevedopsi?utm_source=qr&stkn=MXA0ZnZnNWp0c2tzMA==",
   },
 
   email: {
@@ -24,11 +23,12 @@ export const siteConfig = {
     url: "#", // PENDENTE: Atualizar com URL real
   },
   
-  // Horários
-  schedule: {
-    days: "Segunda, quarta e sexta-feira",
-    hours: "Das 9h às 18h",
-  },
+  availability: [
+    { day: "Segunda-feira", periods: "manhã e tarde" },
+    { day: "Terça-feira", periods: "manhã e tarde" },
+    { day: "Quinta-feira", periods: "tarde e noite" },
+    { day: "Sexta-feira", periods: "manhã e tarde" },
+  ],
   
   // Conteúdo do site
   tagline: "PSICOLOGIA • ATENDIMENTO ONLINE • PALESTRAS",

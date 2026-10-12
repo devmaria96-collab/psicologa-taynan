@@ -11,7 +11,7 @@ type AboutExperienceProps = {
 
 export default function AboutExperience({ moments }: AboutExperienceProps) {
   return (
-    <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12 xl:gap-14">
+    <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] lg:items-center lg:gap-14 xl:gap-16">
       <div className="min-w-0">
         <TrajectoryCarousel moments={moments} />
       </div>
