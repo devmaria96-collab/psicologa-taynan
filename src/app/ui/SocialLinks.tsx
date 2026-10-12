@@ -9,6 +9,10 @@ type SocialLinksProps = {
   className?: string;
 };
 
+function isPlaceholder(href: string) {
+  return href === "#";
+}
+
 export default function SocialLinks({
   variant = "default",
   className = "",
@@ -24,13 +28,13 @@ export default function SocialLinks({
       href: siteConfig.instagram.url,
       label: "Instagram",
       icon: InstagramIcon,
-      external: siteConfig.instagram.url !== "#",
+      external: !isPlaceholder(siteConfig.instagram.url),
     },
     {
       href: siteConfig.linkedin.url,
       label: "LinkedIn",
       icon: BriefcaseBusiness,
-      external: siteConfig.linkedin.url !== "#",
+      external: !isPlaceholder(siteConfig.linkedin.url),
     },
   ];
 
@@ -45,7 +49,7 @@ export default function SocialLinks({
       aria-label="Redes sociais"
     >
       {links.map(({ href, label, icon: Icon, external }) => {
-        if (href === "#") return null;
+        if (isPlaceholder(href)) return null;
 
         return (
           <a
